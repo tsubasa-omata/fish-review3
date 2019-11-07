@@ -1,0 +1,15 @@
+current directory: /Users/tubasa/workspace3/fish-review3/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.4.5/ext/bootsnap
+/Users/tubasa/.rbenv/versions/2.6.3/bin/ruby -I /Users/tubasa/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20191106-36963-1i0jm5l.rb extconf.rb
+creating Makefile
+
+current directory: /Users/tubasa/workspace3/fish-review3/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/tubasa/workspace3/fish-review3/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/tubasa/workspace3/fish-review3/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20191106-36963-1oqgi4o/bootsnap
