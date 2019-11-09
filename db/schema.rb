@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_074839) do
+ActiveRecord::Schema.define(version: 2019_11_09_141353) do
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+    t.string "name", null: false
+    t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "account_name", null: false
+    t.integer "password_digest"
+    t.integer "remember_digest"
+    t.integer "activation_digest"
+    t.boolean "activated", default: false
+    t.integer "reset_digest"
+    t.datetime "reset_sent_at"
+    t.string "picture"
   end
 
 end
