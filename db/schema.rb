@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_09_141353) do
+ActiveRecord::Schema.define(version: 2019_11_12_033829) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_11_09_141353) do
     t.integer "reset_digest"
     t.datetime "reset_sent_at"
     t.string "picture"
+    t.text "prof"
   end
 
 end
