@@ -9,4 +9,4 @@ RSpec.describe UsersController, type: :controller do
       expect{ User.create(name: "aa", email: "aaa@gmail.com", account_name: "aaaaaaa", password: "aaaaaaa") }.to change{ User.count }.by(1)
     end
   end
-end 
+end

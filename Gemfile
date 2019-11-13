@@ -61,6 +61,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails'
+  gem 'solargraph'
 end
 
 group :test do
@@ -70,6 +73,7 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   #gem 'chromedriver-helper'
   gem 'webdrivers'
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
