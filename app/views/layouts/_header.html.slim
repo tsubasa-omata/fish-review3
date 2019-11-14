@@ -1,0 +1,15 @@
+header.navbar.navbar-fixed-top.navbar-inverse
+  div.container
+    = link_to "sample app", '#', id: "logo"
+    nav
+      ul class="nav navbar-nav navbar-right"
+        li = link_to "Home",   '#' 
+        li = link_to "Help",   '#' 
+        li = link_to "Log in", '#' 
+        - if logged_in?
+          li = link_to "" ,"#"
+          li = link_to "" ,"#"
+        - else
+          li = link_to "新規登録" ,"#"
+          li = link_to "ログイン" ,"#"
+        
