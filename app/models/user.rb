@@ -26,7 +26,28 @@ class User < ApplicationRecord
     self.account_name = account_name.downcase
   end
 
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 
+  def User.new_token
+    SecureRandom.urlsafe_base64
+  end
+ 
+  def remember
+    self.remember_token = User.new_token                             #ここでuserの仮想属性remember_tokenに値を設定する
+    update_attribute(:remember_digest, User.digest(remember_token))  #ここでダイジェスト化してremember_digestを更新する
+  end
 
+  def authenticated?(attribute ,token) #このtokenはよく分からない attributeが第一引数でtokenが第二引数呼び出す時は（第一引数、第二引数）という感じ 
+    digest = send("#{attribute}_digest")    #sendメソッドのおかげでこれができる
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
 
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
 end
