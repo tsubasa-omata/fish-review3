@@ -4,8 +4,6 @@ header.navbar.navbar-fixed-top.navbar-inverse
     nav
       ul class="nav navbar-nav navbar-right"
         li = link_to "Home",   '#' 
-        li = link_to "Help",   '#' 
-        li = link_to "Log in", '#' 
         - if logged_in?
           li = link_to "aa" ,"#"
           li = link_to "ログアウト" , logout_path ,method: :delete
