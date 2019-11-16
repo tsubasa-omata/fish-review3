@@ -1,4 +1,5 @@
 module SessionsHelper
+
   def log_in(user)
     session[:user_id] = user.id
   end
@@ -8,6 +9,7 @@ module SessionsHelper
     cookies.permanent.signed[:user_id] = user.id  #user.idをcookiesのuser_idの属性に代入している
     cookies.permanent[:remember_token] = user.remember_token
   end
+
   def current_user
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)
@@ -29,9 +31,16 @@ module SessionsHelper
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
   end
+
   def log_out
     forget(current_user)
     session.delete(:user_id)
     @current_user = nil
   end
+
+  def current_user?(user)
+    user == current_user
+  end
+
+  
 end
