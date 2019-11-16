@@ -12,7 +12,9 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :prof, length: { maximum: 100 }                  
   validates :password, presence: true, 
-                       length: { in: 6..10 }
+                       length: { in: 6..10 },
+                       allow_nil: true     #has_resure_passwordがあるから新規登録時空になることはない
+
 
   before_save :downcase_email
   #mount_uploader :picture, ImageUploader
