@@ -5,7 +5,7 @@ header.navbar.navbar-fixed-top.navbar-inverse
       ul class="nav navbar-nav navbar-right"
         li = link_to "Home",   '#' 
         - if logged_in?
-          li = link_to "aa" ,"#"
+          li = link_to "プロフィール編集" , edit_user_path(current_user)
           li = link_to "ログアウト" , logout_path ,method: :delete
         - else
           li = link_to "新規登録" , new_user_path
