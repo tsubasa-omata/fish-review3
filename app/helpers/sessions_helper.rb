@@ -11,14 +11,14 @@ module SessionsHelper
   end
 
   def current_user
-    if (user_id = session[:user_id])
-      @current_user ||= User.find_by(id: user_id)
-    elsif (user_id = cookies.signed[:user_id])
-      user = User.find_by(id: user_id)
-      if user && user.authenticated?(cookies[:remember_token])
-        log_in user
-        @current_user = user
-      end
+    if (user_id = session[:user_id])                        #sessionのハッシュの中に入っているuser_idの値をローカル変数user_idに代入してそれを評価している
+    @current_user ||= User.find_by(id: session[:user_id])
+    elsif (user_id = cookies.signed[:user_id])              #sessionにuser_idがなかった場合、cookiesのuser_idをローカル変数user_idに代入して評価している
+     user = User.find_by(id: user_id)                       #userインスタンスをUserのDBから取得する
+     if user && user.authenticated?(:remember, cookies[:remember_token])
+       log_in user                                          #sessionを復元
+       @current_user = user
+     end
     end
   end
 
