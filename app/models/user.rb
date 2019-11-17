@@ -17,6 +17,7 @@ class User < ApplicationRecord
 
 
   before_save :downcase_email
+  before_create :create_activation_digest
   #mount_uploader :picture, ImageUploader
   has_secure_password
 
@@ -47,6 +48,11 @@ class User < ApplicationRecord
     digest = send("#{attribute}_digest")    #sendメソッドのおかげでこれができる
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  def create_activation_digest
+    self.activation_token  = User.new_token
+    self.activation_digest = User.digest(activation_token)
   end
 
   def forget
