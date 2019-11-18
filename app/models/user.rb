@@ -55,6 +55,13 @@ class User < ApplicationRecord
     self.activation_digest = User.digest(activation_token)
   end
 
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest, User.digest(reset_token))
+  end
+
+  
+
   def forget
     update_attribute(:remember_digest, nil)
   end
@@ -66,4 +73,9 @@ class User < ApplicationRecord
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
   end
+
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now      #password_reset(self)これはuser_mailerで定義している
+  end
+  
 end
