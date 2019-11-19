@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_053910) do
+ActiveRecord::Schema.define(version: 2019_11_19_120736) do
 
 # Could not dump table "reviews" because of following StandardError
-#   Unknown type 'bloolean' for column 'blood'
+#   Unknown type '' for column 'blood'
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
