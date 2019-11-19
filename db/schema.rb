@@ -10,26 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_032249) do
+ActiveRecord::Schema.define(version: 2019_11_19_053910) do
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "fish_id", null: false
-    t.integer "taste_level", null: false
-    t.string "season", null: false
-    t.string "place", null: false
-    t.string "place_detail"
-    t.string "recipe"
-    t.string "preservation_period"
-    t.integer "fish_size", null: false
-    t.boolean "blood"
-    t.text "taste_imp"
-    t.string "picture"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["fish_id", "season", "place"], name: "index_reviews_on_fish_id_and_season_and_place"
-    t.index ["user_id", "created_at"], name: "index_reviews_on_user_id_and_created_at"
-  end
+# Could not dump table "reviews" because of following StandardError
+#   Unknown type 'bloolean' for column 'blood'
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
