@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+  
   root 'static_pages#home'
   resources :users
+  resources :reviews
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   
