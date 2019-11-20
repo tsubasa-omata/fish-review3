@@ -6,9 +6,10 @@ class Review < ApplicationRecord
     validates :place
     validates :fish_size
   end
-  
-  validates :taste_level,  length: { in: 1..5 }
-  validates :place_detail, length: { maxmum: 10 }
-  validates :recipe,       length: { maxmum: 10 }
-  
+
+  validates :taste_level,  length:       { in: 1..5 }
+  validates :taste_imp,    length:       { maximum: 200 }
+  validates :place_detail, length:       { maximum: 10 }
+  validates :recipe,       length:       { maximum: 10 }
+  validates :season,       numericality: { :less_than_or_equal_to => 12 }
 end
