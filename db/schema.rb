@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_120736) do
+ActiveRecord::Schema.define(version: 2019_11_20_075209) do
+
+  create_table "fish", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 # Could not dump table "reviews" because of following StandardError
 #   Unknown type '' for column 'blood'
