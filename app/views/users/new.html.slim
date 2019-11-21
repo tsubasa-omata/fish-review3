@@ -24,3 +24,5 @@ div.row
       = f.password_field :password_confirmation, class: 'form-control' 
 
       = f.submit 'アカウントを作成', class: "btn btn-primary" 
+
+<%= select_tag :user, options_from_collection_for_select(@user, :id, :name), include_blank: true, class: "js-searchable" %>

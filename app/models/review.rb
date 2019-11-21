@@ -1,5 +1,6 @@
 class Review < ApplicationRecord
   belongs_to :user
+  belongs_to :fish
   with_options presence: true do
     validates :taste_level
     validates :season

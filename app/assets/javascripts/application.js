@@ -14,6 +14,14 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
+//= require select2
+$(document).ready(function(){
+    $('.js-searchable').select2({
+      allowClear: true,
+      width: 200
+    });
+  });
 //= require bootstrap-sprockets
 //= require_tree .

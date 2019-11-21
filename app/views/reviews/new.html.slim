@@ -3,8 +3,8 @@ div.row
   div.col-md-6.col-md-offset-3
     = form_with model: @review, local: true do |f|
       == render "shared/error_messages" , object: f.object
-      / = f.label :name, 'アカウント名' 
-      / = f.text_field :name, class: 'form-control' 
+      = f.label :fish_id, '魚種名' 
+      = f.select :fish_id,  Fish.all.map{|fish| [fish.name , fish.id]}  ,class: "js-selectable"
 
       = f.label :taste_level, '食味評価'
       = f.select :taste_level,[1,2,3,4,5], class: 'form-control' 

@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
  
-  get 'scrip/sc' => 'scrip#sc'
+  #get 'scrip/sc' => 'scrip#sc'
 end
 
