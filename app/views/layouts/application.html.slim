@@ -10,10 +10,10 @@ html
     /= render 'layout/shim' ブラウザ対応
   body
     == render 'layouts/header'
-    /div.container
-    /  - flash.each do |message_type, message| 
-    /  div class="alert" class="alert-#{message_type}" 
-    /    = message 
+    div.container
+      - flash.each do |message_type, message| 
+        div class="alert" class="alert-#{message_type}"
+          = message 
     == yield
     == render 'layouts/footer'
     = debug(params) if Rails.env.development?

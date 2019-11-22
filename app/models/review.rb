@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :fish
+  default_scope -> { order(created_at: :desc) }
   with_options presence: true do
     validates :taste_level
     validates :season
