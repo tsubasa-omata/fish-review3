@@ -4,7 +4,7 @@ div.row
     = form_with model: @review, local: true do |f|
       == render "shared/error_messages" , object: f.object
       = f.label :fish_id, '魚種名' 
-      = f.select :fish_id,  Fish.all.map{|fish| [fish.name , fish.id]}  ,class: "js-selectable"
+      = f.select :fish_id,  Fish.all.map{|fish| [fish.name , fish.id]} ,{},{class: "js-selectable"}
 
       = f.label :taste_level, '食味評価'
       = f.select :taste_level,[1,2,3,4,5], class: 'form-control' 
@@ -80,6 +80,6 @@ div.row
       = f.check_box :blood ,class: 'form-control' 
 
       = f.label :picture , '画像'
-      = f.file_field :blood, class: 'form-control' 
+      = f.file_field :blood, class: 'form-control-file' 
 
       = f.submit '投稿', class: "btn btn-primary" 

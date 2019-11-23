@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :logged_in_user, only: [:create, :edit, :destroy]
+  before_action :correct_user,   only: :destroy
   def show
     @review = Review.find_by(id: params[:id])
   end
@@ -32,6 +33,12 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    @review.destroy
+    flash[:success] = "投稿を削除しました"
+    redirect_to request.referrer || root_url
+  end
+
   private
 
       def review_params
@@ -47,5 +54,10 @@ class ReviewsController < ApplicationController
                                         :blood,
                                         :picture
                                         )
+      end
+
+      def correct_user
+        @review = current_user.reviews.find_by(id: params[:id])
+        redirect_to root_url if @review.nil?
       end
 end

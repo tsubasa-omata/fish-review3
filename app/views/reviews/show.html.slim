@@ -1,2 +1,4 @@
 .container
   == render "shared/review"
+  = link_to "削除", review_path(@review.id), method: :delete,
+                                       data: { confirm: "You sure?" } 

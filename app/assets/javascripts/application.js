@@ -17,9 +17,11 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require select2
+console.log('tet')
 $(document).ready(function(){
-    $('.js-searchable').select2({
-      allowClear: true,
+  console.log('test')
+    $('.js-selectable').select2({
+      allowClear: false,
       width: 200
     });
   });
