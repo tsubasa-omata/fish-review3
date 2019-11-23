@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,YAAa;EACX,KAAK,EAAE,IAAI",
+"sources": ["nested_glob.scss"],
+"names": [],
+"file": "nested_glob.css"
+}

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,QAAS;EACP,KAAK,EAAE,KAAK",
+"sources": ["globbed.scss"],
+"names": [],
+"file": "globbed.css"
+}
