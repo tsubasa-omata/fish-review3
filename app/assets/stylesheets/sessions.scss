@@ -1,7 +1,9 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.session{
 h1{
+  
   font-size: 2em;
   text-align:center;
 }
@@ -19,4 +21,5 @@ p.sinki{
 span{
   font-size: 0.8em;
   margin-left:1%;
+}
 }

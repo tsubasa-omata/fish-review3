@@ -1,13 +1,41 @@
-header.navbar.navbar-fixed-top.navbar-inverse
-  div.container
-    = link_to "sample app", '#', id: "logo"
-    nav
-      ul class="nav navbar-nav navbar-right"
-        li = link_to "Home",   '#' 
-        - if logged_in?
-          li = link_to "プロフィール編集" , edit_user_path(current_user)
-          li = link_to "ログアウト" , logout_path ,method: :delete
-        - else
-          li = link_to "新規登録" , new_user_path
-          li = link_to "ログイン" , login_path
-        
+
+headr
+nav.navbar.navbar-expand-lg.bg-white.navbar-light.shadow.pt-2.pb-3.px-5.mb-0.sticky-top
+  a.navbar-brand href="/" Fish-Review
+  button.navbar-toggler data-toggle="collapse" data-target="#navbarcontent"
+    span.navbar-toggler-icon
+  #navbarcontent.collapse.navbar-collapse
+    ul.navbar-nav.ml-auto
+      - if logged_in?
+        li.nav-item.ml-1.ml-xl-3
+          = link_to "ホーム",   '#' ,class: "nav-link"
+        li.nav-item.ml-1.ml-xl-3
+          = link_to "投稿する",   '#' ,class: "nav-link"
+        li.nav-item.ml-1.ml-xl-3
+          = link_to "魚種一覧",   '#' ,class: "nav-link"
+        li.nav-item.ml-1.ml-xl-3
+          = link_to "全投稿一覧",   '#' ,class: "nav-link"
+        li.nav-item.ml-1.ml-xl-3
+          = link_to "いいね一覧",   '#' ,class: "nav-link"
+        li.nav-item.dropdown.ml-1.ml-xl-3
+          a.nav-link.dropdown-toggle data-toggle="dropdown" href="#"
+            ="検索"
+          .dropdown-menu
+            = link_to "ユーザー検索",   '#' ,class: "dropdown-item"
+            = link_to "投稿検索",   '#' ,class: "dropdown-item"
+        li.nav-item.ml-1.ml-xl-3
+          = link_to "プロフィール編集" , edit_user_path(current_user),class: "nav-link"
+        li.nav-item.ml-1.ml-xl-3
+          = link_to "ログアウト" , logout_path ,method: :delete ,class: "nav-link"
+      - else
+        li.nav-item.ml-1.ml-xl-3
+          = link_to "ホーム",   '#' ,class: "nav-link"
+        li.nav-item.ml-1.ml-xl-3
+          = link_to "検索",   '#' ,class: "nav-link"
+        li.nav-item.ml-1.ml-xl-3
+          = link_to "魚種一覧",   '#' ,class: "nav-link"
+        li.nav-item.ml-1.ml-xl-3
+          = link_to "新規登録" , new_user_path ,class: "nav-link"
+        li.nav-item.ml-1.ml-xl-3
+          = link_to "ログイン" , login_path ,class: "nav-link"
+          
