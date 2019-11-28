@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :reviews
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  
+  resources :relationships, only: [:create, :destroy]
   namespace :admin do
     get    'users/edit' => 'users#edit'
     delete 'users/:id' => 'users#destroy'
@@ -17,5 +17,11 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
  
   #get 'scrip/sc' => 'scrip#sc'
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
 end
 
