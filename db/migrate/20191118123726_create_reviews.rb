@@ -10,7 +10,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.string  :recipe
       t.string  :preservation_period
       t.integer :fish_size   , null: false
-      t.boolean :blood       
+      t.boolean :blood       , default: false
       t.text    :taste_imp   
       t.string  :picture
 
