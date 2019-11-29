@@ -48,6 +48,7 @@ private
             :picture ,
             :password ,
             :password_confirmation ,
+            :avatar
         )
     end
 

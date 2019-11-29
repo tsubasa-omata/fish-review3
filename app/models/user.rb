@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   has_many :reviews, dependent: :destroy
+  has_one_attached :avatar
   validates :name, presence: true,
                    length: { maximum: 10 }
   validates :account_name, presence: true, 
