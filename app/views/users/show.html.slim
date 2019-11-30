@@ -3,4 +3,5 @@
 = @user.activated 
 = @user.id 
 = link_to "編集" , edit_user_path 
-== render "follow_form"
+== render "follow_form" if logged_in? 
+== render "shared/profile"
