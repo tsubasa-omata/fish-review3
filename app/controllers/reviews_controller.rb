@@ -52,7 +52,7 @@ class ReviewsController < ApplicationController
                                         :recipe,
                                         :preservation_period,
                                         :blood,
-                                        :picture
+                                        :avatar
                                         )
       end
 

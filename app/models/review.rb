@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :fish
+  has_one_attached :avatar
   default_scope -> { order(created_at: :desc) }
   with_options presence: true do
     validates :taste_level
