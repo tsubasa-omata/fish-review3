@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index,:edit, :update,:destroy,:following,:followers]
   before_action :correct_user,   only: [:edit, :update]
   def show
     @user = User.find_by(id: params[:id])
@@ -15,8 +15,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save                                       #ここでbefore_actionのcreate_activation_digestが実行される。
        @user.send_activation_email                      #このsend_activation_emailメソッドの中のaccount_activationはuser_mailerのメソッド？それともuser_mailer_previewのメソッド？
-      flash[:info] = "Please check your email to activate your account."
-      redirect_to root_url
+       flash[:info] = "Please check your email to activate your account."
+       redirect_to root_url
     else
       render "new"
   end
@@ -36,6 +36,19 @@ def update
   end
 end
 
+def following
+  @title = "Following"
+  @user  = User.find(params[:id])
+  #@users = @user.following.paginate(page: params[:page]) #ここをコメントアウトしていたらfollowerの集合がshow_followに表示されるわけがない
+  render 'show_follow'
+end
+
+def followers
+  @title = "Followers"
+  @user  = User.find(params[:id])
+  #@users = @user.followers.paginate(page: params[:page])
+  render 'show_follow'
+end
 
 private
 

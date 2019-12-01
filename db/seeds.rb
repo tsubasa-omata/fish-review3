@@ -7,3 +7,5 @@ User.create!(
     password_confirmation: 'aaaaaa'
     
  )
+
+ 
