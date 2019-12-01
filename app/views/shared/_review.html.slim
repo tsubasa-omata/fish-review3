@@ -1,5 +1,6 @@
 = @review.fish.name
-= @review.picture
+- if @review.avatar
+  = image_tag(@review.avatar)
 = @review.user.name
 = @review.taste_level
 = @review.season
