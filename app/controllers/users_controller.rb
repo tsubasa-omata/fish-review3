@@ -36,6 +36,19 @@ def update
   end
 end
 
+def following
+  @title = "Following"
+  @user  = User.find(params[:id])
+  #@users = @user.following.paginate(page: params[:page]) #ここをコメントアウトしていたらfollowerの集合がshow_followに表示されるわけがない
+  render 'show_follow'
+end
+
+def followers
+  @title = "Followers"
+  @user  = User.find(params[:id])
+  #@users = @user.followers.paginate(page: params[:page])
+  render 'show_follow'
+end
 
 private
 
