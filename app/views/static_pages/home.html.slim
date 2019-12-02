@@ -1,0 +1,8 @@
+h3 Micropost Feed
+- if @feed_items.present?
+  -@feed_items.each do |feed_item|
+    ol
+      == render 'shared/review' , object: feed_item
+      | Posted 
+      = time_ago_in_words(feed_item.created_at)  
+      | ago.

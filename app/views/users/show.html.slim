@@ -1,7 +1,15 @@
-= @user.name 
-= @user.email 
-= @user.activated 
-= @user.id 
-= link_to "編集" , edit_user_path 
-== render "follow_form" if logged_in? 
-== render "shared/profile"
+.container
+  = @user.name 
+  = @user.email 
+  = @user.activated 
+  = @user.id 
+  = link_to "編集" , edit_user_path 
+  == render "follow_form" if logged_in? 
+  == render "shared/profile"
+  - if @user.reviews.any?
+    - @reviews.each do |review|
+      ol
+        == render "shared/review" , object: review
+        | Posted 
+        = time_ago_in_words(review.created_at)  
+        | ago.

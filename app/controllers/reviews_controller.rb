@@ -3,6 +3,8 @@ class ReviewsController < ApplicationController
   before_action :correct_user,   only: :destroy
   def show
     @review = Review.find_by(id: params[:id])
+    @user = User.find_by(id: params[:id])
+    @reviews = @user.reviews
   end
 
   def new

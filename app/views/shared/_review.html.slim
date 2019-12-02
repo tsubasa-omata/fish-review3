@@ -1,12 +1,11 @@
-= @review.fish.name
-- if @review.avatar
-  = image_tag(@review.avatar)
-= @review.user.name
-= @review.taste_level
-= @review.season
-= @review.place
-= @review.place_detail
-= @review.fish_size
+= object.fish.name
+= image_tag object.avatar if object.avatar.attached?
+= object.user.name
+= object.taste_level
+= object.season
+= object.place
+= object.place_detail
+= object.fish_size
 
-= @review.taste_imp
+= object.taste_imp
 
