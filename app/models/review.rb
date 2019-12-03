@@ -16,4 +16,7 @@ class Review < ApplicationRecord
   validates :place_detail, length:       { maximum: 10 }
   validates :recipe,       length:       { maximum: 10 }
   validates :season,       numericality: { :less_than_or_equal_to => 12 }
+
+  
+
 end

@@ -23,6 +23,8 @@ gem 'bcrypt'
 gem 'mini_magick'
 gem 'aws-sdk-s3', require: false
 
+gem 'pry-rails'
+
 gem "jquery-turbolinks"
 gem "select2-rails"
 # Use Uglifier as compressor for JavaScript assets

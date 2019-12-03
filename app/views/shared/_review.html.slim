@@ -1,7 +1,10 @@
+
 = object.fish.name
-= image_tag object.avatar if object.avatar.attached?
+= image_tag object.avatar.variant(resize:"300x300").processed if object.avatar.attached?
+= image_tag object.user.avatar.variant(resize:"300x300").processed if object.user.avatar.attached?
 = object.user.name
-= object.taste_level
+span "食味"
+= star(object)
 = object.season
 = object.place
 = object.place_detail

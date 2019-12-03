@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     @review = Review.find_by(id: params[:id])
     @user = User.find_by(id: params[:id])
     @reviews = @user.reviews
+    
   end
 
   def new
