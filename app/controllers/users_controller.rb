@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   def show
     @user = User.find_by(id: params[:id])
-    @reviews = @user.reviews
+    @reviews = @user.reviews.order(:created_at).page(params[:page]).per(5)
     
     
     

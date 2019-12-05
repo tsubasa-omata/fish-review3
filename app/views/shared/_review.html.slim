@@ -38,14 +38,15 @@
         #{object.recipe}
     p.mb-0
       |食味
-    p.border.rounded
+    p.border.rounded.p-2
       = object.taste_imp
     | Posted 
     = time_ago_in_words(object.created_at)  
     |  ago.
   - if review_correct_user
-    .card-footer.py-1.bg-white
-      = link_to "編集" , "#"
-      p.d-inline-block.float-right
+    .card-footer.py-0.bg-white
+      p.d-inline-block.float-left.my-1
+        = link_to "編集" , "#"
+      p.d-inline-block.float-right.my-1
         = link_to "削除" , "#"
 
