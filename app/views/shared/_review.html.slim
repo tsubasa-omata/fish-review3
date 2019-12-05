@@ -1,14 +1,51 @@
-
-= object.fish.name
-= image_tag object.avatar.variant(resize:"300x300").processed if object.avatar.attached?
-= image_tag object.user.avatar.variant(resize:"300x300").processed if object.user.avatar.attached?
-= object.user.name
-span "食味"
-= star(object)
-= object.season
-= object.place
-= object.place_detail
-= object.fish_size
-
-= object.taste_imp
+.card
+  .card-header.text-center.py-1.bg-white = object.fish.name
+  .card-body
+    - if object.avatar.attached?
+      = image_tag object.avatar.variant(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid" 
+    -else
+      = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid" 
+    = image_tag object.user.avatar.(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed if object.user.avatar.attached?
+    p 
+       = object.user.name
+    p.d-inline-block
+      | 食味： 
+      span.text-warning.font-weight-bold
+        = star(object)
+    p.d-sm-inline-block.ml-sm-4
+      | 時期：
+      = object.season
+      | 月
+    p
+      | 場所： 
+        #{object.place}
+    p
+      | 場所(詳細)：
+      = object.place_detail
+    p
+      | サイズ：
+        #{object.fish_size}
+      | cm
+    p.d-inline-block
+      | 熟成期間：
+      = object.preservation_period
+      | 日間
+    p.d-sm-inline-block.ml-sm-4
+      | 血抜き：
+        #{blood(object)}
+    p
+      | 調理方法：
+        #{object.recipe}
+    p.mb-0
+      |食味
+    p.border.rounded
+      = object.taste_imp
+    | Posted 
+    = time_ago_in_words(object.created_at)  
+    |  ago.
+  - if review_correct_user
+    .card-footer.py-1.bg-white
+      = link_to "編集" , "#"
+      p.d-inline-block.float-right
+        = link_to "削除" , "#"
 

@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  def thumbnail
+    return self.avatar.variant(resize: '50x50')
+  end
 end

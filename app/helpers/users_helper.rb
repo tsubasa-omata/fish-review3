@@ -12,4 +12,19 @@ module UsersHelper
       return "★★★★★"
     end
   end
+  #application_controllerにincludeしているからどこでも呼び出せる
+  def review_correct_user
+    @user = User.find(params[:id])
+    current_user?(@user)
+  end
+
+  def blood(review)
+    if review.blood == true
+      return "有り"
+    else
+      return "無し"
+    end
+
+  end
+
 end

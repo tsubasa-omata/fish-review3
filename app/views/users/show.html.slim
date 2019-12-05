@@ -7,9 +7,10 @@
   == render "follow_form" if logged_in? 
   == render "shared/profile"
   - if @reviews.any?
-    - @reviews.each do |review|
-      ol
-        == render "shared/review" , object: review
-        | Posted 
-        = time_ago_in_words(review.created_at)  
-        | ago.
+    .card-columns
+      - @reviews.each do |review|  
+        ol 
+          li
+            == render "shared/review" , object: review
+          
+            
