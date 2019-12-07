@@ -40,9 +40,9 @@
       |食味
     p.border.rounded.p-2
       = object.taste_imp
-    | Posted 
+    |
     = time_ago_in_words(object.created_at)  
-    |  ago.
+    |前
   - if review_correct_user
     .card-footer.py-0.bg-white
       p.d-inline-block.float-left.my-1

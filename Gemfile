@@ -27,6 +27,9 @@ gem 'pry-rails'
 
 gem 'kaminari'
 
+gem 'rails-i18n', '~> 5.1'
+gem 'kaminari-bootstrap'
+
 gem "jquery-turbolinks"
 gem "select2-rails"
 # Use Uglifier as compressor for JavaScript assets

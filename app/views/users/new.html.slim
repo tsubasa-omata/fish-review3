@@ -1,28 +1,29 @@
-div.row
-  div.col-md-6.col-md-offset-3
+.row
+  .col-md-6.offset-md-3
     = form_with model: @user, local: true do |f|
       == render "shared/error_messages" , object: f.object
-      = f.label :name, 'アカウント名' 
-      = f.text_field :name, class: 'form-control' 
-
-      = f.label :account_name, 'アカウントID'
-      = f.text_field :account_name, class: 'form-control' 
-
-      = f.label :email , 'メールアドレス'
-      = f.email_field :email, class: 'form-control' 
-
-      = f.label :prof , 'プロフィール'
-      = f.text_field :prof, class: 'form-control' 
-
-      = f.label :avatar , 'プロフィール写真'
-      = f.file_field :avatar, class: 'form-control'
-
-      = f.label :password , 'パスワード'
-      = f.password_field :password, class: 'form-control' 
-
-      = f.label :password_confirmation, "パスワード（確認）" 
-      = f.password_field :password_confirmation, class: 'form-control' 
-
-      = f.submit 'アカウントを作成', class: "btn btn-primary" 
+      .form-group  
+        = f.label :name, 'アカウント名' 
+        = f.text_field :name, class: 'form-control' 
+      .form-group  
+        = f.label :account_name, 'アカウントID'
+        = f.text_field :account_name, class: 'form-control' 
+      .form-group  
+        = f.label :email , 'メールアドレス'
+        = f.email_field :email, class: 'form-control' 
+      .form-group  
+        = f.label :prof , 'プロフィール'
+        = f.text_field :prof, class: 'form-control' 
+      .form-group  
+        = f.label :avatar , 'プロフィール写真'
+        = f.file_field :avatar, class: 'form-control'
+      .form-group  
+        = f.label :password , 'パスワード'
+        = f.password_field :password, class: 'form-control' 
+      .form-group
+        = f.label :password_confirmation, "パスワード（確認）" 
+        = f.password_field :password_confirmation, class: 'form-control' 
+      .text-center
+        = f.submit 'アカウントを作成', class: "btn btn-primary" 
 
 <%= select_tag :user, options_from_collection_for_select(@user, :id, :name), include_blank: true, class: "js-searchable" %>
