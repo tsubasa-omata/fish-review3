@@ -5,7 +5,7 @@
       = image_tag object.avatar.variant(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid" 
     -else
       = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid" 
-    = image_tag object.user.avatar.(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed if object.user.avatar.attached?
+    = image_tag object.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed if object.user.avatar.attached?
     p 
        = object.user.name
     p.d-inline-block

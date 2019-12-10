@@ -44,14 +44,14 @@ def following
   @title = "フォロ一覧"
   @user  = User.find(params[:id])
   @users = @user.following
-  render 'show_follow'
+  render 'show_follow2'
 end
 
 def followers
   @title = "フォロワー一覧"
   @user  = User.find(params[:id])
   @users = @user.followers
-  render 'show_follow'
+  render 'show_follow2'
 end
 
 private
