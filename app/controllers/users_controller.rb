@@ -4,9 +4,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @reviews = @user.reviews.order(:created_at).page(params[:page]).per(5)
-    
-    
-    
   end
 
   def new
@@ -23,8 +20,8 @@ class UsersController < ApplicationController
       redirect_to root_url
     else
       render "new"
+    end
   end
-end
 
 def edit
   @user = User.find(params[:id])

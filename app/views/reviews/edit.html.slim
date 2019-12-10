@@ -1,85 +1,88 @@
-h1 投稿画面
-div.row
-  div.col-md-6.col-md-offset-3
-    = form_with model: @review, local: true do |f|
-      == render "shared/error_messages" , object: f.object
-      = f.label :fish_id, '魚種名' 
-      = f.select :fish_id,  Fish.all.map{|fish| [fish.name , fish.id]}  ,class: "js-selectable"
-
-      = f.label :taste_level, '食味評価'
-      = f.select :taste_level,[1,2,3,4,5], class: 'form-control' 
-      br
-      = f.label :taste_imp , '食味感想'
-      = f.text_area :taste_imp, class: 'form-control' 
-      
-      = f.label :season ,'時期(月)'
-      = f.select :season, [1,2,3,4,5,6,7,8,9,10,11,12], class: 'form-control' 
-      br
-      = f.label :fish_size , '魚のサイズ（cm）'
-      = f.number_field :fish_size, class: 'form-control' 
-
-      = f.label :place , '場所（都道府県）'
-      = f.select :place, ["北海道",
-                          "青森県",
-                          "岩手県",
-                          "宮城県",
-                          "秋田県",
-                          "山形県",
-                          "福島県",
-                          "茨城県",
-                          "栃木県",
-                          "群馬県",
-                          "埼玉県",
-                          "千葉県",
-                          "東京都",
-                          "神奈川県",
-                          "新潟県",
-                          "富山県",
-                          "石川県",
-                          "福井県",
-                          "山梨県",
-                          "長野県",
-                          "岐阜県",
-                          "静岡県",
-                          "愛知県",
-                          "三重県",
-                          "滋賀県",
-                          "京都府",
-                          "大阪府",
-                          "兵庫県",
-                          "奈良県",
-                          "和歌山県",
-                          "鳥取県",
-                          "島根県",
-                          "岡山県",
-                          "広島県",
-                          "山口県",
-                          "徳島県",
-                          "香川県",
-                          "愛媛県",
-                          "高知県",
-                          "福岡県",
-                          "佐賀県",
-                          "長崎県",
-                          "熊本県",
-                          "大分県",
-                          "宮崎県",
-                          "鹿児島県",
-                          "沖縄県" ], :prompt => "選択してください" ,class: 'form-control' 
-      br
-      = f.label :place_detail , '場所（詳細）'
-      = f.text_field :place_detail, class: 'form-control'
-
-      = f.label :recipe , '調理法（10文字まで）'
-      = f.text_field :recipe, class: 'form-control' 
-
-      = f.label :preservation_period, "熟成期間（日）" 
-      = f.select :preservation_period, [1,2,3,4,5,6,7,8,9,10,11,12,13,14], class: 'form-control' 
-      br
-      = f.label :blood , '血抜き有'
-      = f.check_box :blood ,class: 'form-control' 
-
-      = f.label :picture , '画像'
-      = f.file_field :blood, class: 'form-control' 
-
-      = f.submit '投稿', class: "btn btn-primary" 
+.review
+  h1 投稿編集画面
+  div.row
+    div.col-md-6.offset-md-3
+      = form_with model: @review, local: true do |f|
+        == render "shared/error_messages" , object: f.object
+        .req
+          .form-group
+            = f.label :fish_id, '魚種名' 
+            = f.select :fish_id,  Fish.all.map{|fish| [fish.name , fish.id]}  ,class: "js-selectable"
+          .form-group
+            = f.label :taste_level, '食味評価'
+            = f.select :taste_level,[1,2,3,4,5], class: 'form-control' 
+            br
+            = f.label :taste_imp , '食味感想'
+            = f.text_area :taste_imp, class: 'form-control' 
+          .form-group  
+            = f.label :season ,'時期(月)'
+            = f.select :season, [1,2,3,4,5,6,7,8,9,10,11,12], class: 'form-control' 
+            br
+            = f.label :fish_size , '魚のサイズ（cm）'
+            = f.number_field :fish_size, class: 'form-control' 
+          .form-group
+            = f.label :place , '場所（都道府県）'
+            = f.select :place, ["北海道",
+                                "青森県",
+                                "岩手県",
+                                "宮城県",
+                                "秋田県",
+                                "山形県",
+                                "福島県",
+                                "茨城県",
+                                "栃木県",
+                                "群馬県",
+                                "埼玉県",
+                                "千葉県",
+                                "東京都",
+                                "神奈川県",
+                                "新潟県",
+                                "富山県",
+                                "石川県",
+                                "福井県",
+                                "山梨県",
+                                "長野県",
+                                "岐阜県",
+                                "静岡県",
+                                "愛知県",
+                                "三重県",
+                                "滋賀県",
+                                "京都府",
+                                "大阪府",
+                                "兵庫県",
+                                "奈良県",
+                                "和歌山県",
+                                "鳥取県",
+                                "島根県",
+                                "岡山県",
+                                "広島県",
+                                "山口県",
+                                "徳島県",
+                                "香川県",
+                                "愛媛県",
+                                "高知県",
+                                "福岡県",
+                                "佐賀県",
+                                "長崎県",
+                                "熊本県",
+                                "大分県",
+                                "宮崎県",
+                                "鹿児島県",
+                                "沖縄県" ], :prompt => "選択してください" ,class: 'form-control' 
+            br
+            = f.label :place_detail , '場所（詳細）'
+            = f.text_field :place_detail, class: 'form-control'
+          .form-group
+            = f.label :recipe , '調理法（10文字まで）'
+            = f.text_field :recipe, class: 'form-control' 
+          .form-group
+            = f.label :preservation_period, "熟成期間（日）" 
+            = f.select :preservation_period, [1,2,3,4,5,6,7,8,9,10,11,12,13,14], class: 'form-control' 
+            br
+            = f.label :blood , '血抜き有'
+            = f.check_box :blood ,class: 'form-control' 
+          .form-group
+            = f.label :picture , '画像'
+            = f.file_field :blood, class: 'form-control' 
+          .text-center
+            = f.submit '投稿', class: "btn btn-primary" 
