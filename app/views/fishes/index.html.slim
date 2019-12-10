@@ -1,0 +1,7 @@
+.container
+  h1.mt-5.mb-5.text-center 魚一覧
+  .row
+    - @fishes.each do |fish|
+      .col-12.col-xs-6.col-sm-4.col-md-3
+        = link_to fish.name , fish_path(fish)
+        
