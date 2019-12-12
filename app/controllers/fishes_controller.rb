@@ -1,9 +1,17 @@
 class FishesController < ApplicationController
   def index
-    @fishes = Fish.all
+    @q = Fish.ransack(params[:q])
+    @fishes = @q.result(distinct: true)
   end
 
   def show
-    @fish = Fish.find_by(id: params[:id])
+    @q = Fish.search(search_params)
+    @fish = @q.result(distinct: true)
   end
+
+  private
+  def search_params
+    params.require(:q).permit!
+  end
+
 end

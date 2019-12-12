@@ -1,6 +1,12 @@
 .container
   h1.mt-5.mb-5.text-center 魚一覧
   .row
+    .col-12.text-center.mb-3
+      = search_form_for(@q, url:fishes_path) do |f|
+        = f.label :name, "魚種名" ,class: "mr-3"
+        = f.search_field :name_cont 
+        = f.submit "検索"  ,class: "ml-3"
+      end 
     - @fishes.each do |fish|
       .col-12.col-xs-6.col-sm-4.col-md-3
         = link_to fish.name , fish_path(fish)
