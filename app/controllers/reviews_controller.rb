@@ -1,6 +1,13 @@
 class ReviewsController < ApplicationController
   before_action :logged_in_user, only: [:create, :edit, :destroy]
   before_action :correct_user,   only: :destroy
+  
+  def index
+    @q = Review.ransack(params[:q])
+    @fishes = Fish.all
+    @reviews = @q.result.includes(:fish)
+  end
+  
   def show
     @review = Review.find_by(id: params[:id])
     @user = User.find_by(id: params[:id])

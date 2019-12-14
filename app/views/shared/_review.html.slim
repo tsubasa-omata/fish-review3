@@ -43,10 +43,12 @@
     |
     = time_ago_in_words(object.created_at)  
     |前
-  - if review_correct_user
-    .card-footer.py-0.bg-white
-      p.d-inline-block.float-left.my-1
-        = link_to "編集" , "#"
-      p.d-inline-block.float-right.my-1
-        = link_to "削除" , "#"
-
+  - if params[:id].present?
+    - if review_correct_user
+      .card-footer.py-0.bg-white
+        p.d-inline-block.float-left.my-1
+          = link_to "編集" , "#"
+        p.d-inline-block.float-right.my-1
+          = link_to "削除" , "#"
+    end
+  end

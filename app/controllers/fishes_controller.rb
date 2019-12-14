@@ -5,13 +5,12 @@ class FishesController < ApplicationController
   end
 
   def show
-    @q = Fish.search(search_params)
-    @fish = @q.result(distinct: true)
+    @fish = Fish.find_by(id: params[:id])
   end
 
   private
   def search_params
-    params.require(:q).permit!
+    params.require(:q).permit(:name)
   end
 
 end

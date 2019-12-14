@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index,:edit, :update,:destroy,:following,:followers]
   before_action :correct_user,   only: [:edit, :update]
+  
+  def index
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true)
+  end
+  
   def show
     @user = User.find_by(id: params[:id])
     @reviews = @user.reviews.order(:created_at).page(params[:page]).per(5)
@@ -9,8 +15,6 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-
-  
 
   def create
     @user = User.new(user_params)

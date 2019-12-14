@@ -1,5 +1,14 @@
+.container
+  h1.mt-5.mb-5.text-center ユーザー一覧
+  .row
+    .col-12.text-center.mb-3
+      = search_form_for(@q, url:users_path) do |f|
+        /= f.label :name, " " ,class: "mr-3"
+        = f.search_field :name_cont , placeholder: "ユーザー名またはユーザーID" , class: "col-10 col-sm-5 rounded-lg mb-4"
+        = f.submit "検索"  ,class: "ml-3 btn btn-success btn-sm "
+      end
+  
 .show_follow
-  h1.text-center.mt-5.mb-5 =@title
   - if @users.present?
     - @users.each do |user| 
       div.container

@@ -1,0 +1,28 @@
+.container
+  h1.mt-5.mb-5.text-center 投稿一覧
+  .row
+    .col-12.text-center.mb-3
+      = search_form_for(@q, url:reviews_path) do |f|
+
+        = f.label :fish, "魚種" ,class: "d-inline-block" 
+        = f.select :fish_id,  Fish.all.map{|fish| [fish.name , fish.id]} ,{include_blank: true},class: "js-selectable"
+        
+        = f.label :season, "時期" ,class: ""
+
+        = f.collection_select :season_eq, Review.all, :season, :season, :include_blank => '指定なし',  placeholder: "時期" , class: "col-10 col-sm-5 rounded-lg mb-4"
+        
+        = f.label :place, "場所" ,class: ""
+        = f.collection_select :place_eq ,Review.all, :place,:place, placeholder: "場所" ,:include_blank => '指定なし', class: "col-10 col-sm-5 rounded-lg mb-4"
+
+        = f.label :taste_level, "食味評価" ,class: ""
+        = f.collection_select :taste_level_eq ,Review.all, :taste_level,:taste_level, placeholder: "食味評価" , :include_blank => '指定なし',class: "col-10 col-sm-5 rounded-lg mb-4"
+
+        = f.submit "検索"  ,class: "ml-3 btn btn-success btn-sm "
+      end
+      
+  - if @reviews.any?
+    .card-columns
+      - @reviews.each do |review|  
+        ol 
+          li
+            == render "shared/review" , object: review
