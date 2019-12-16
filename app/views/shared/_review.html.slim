@@ -1,54 +1,55 @@
-.card
-  .card-header.text-center.py-1.bg-white = object.fish.name
-  .card-body
-    - if object.avatar.attached?
-      = image_tag object.avatar.variant(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid" 
-    -else
-      = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid" 
-    = image_tag object.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed if object.user.avatar.attached?
-    p 
-       = object.user.name
-    p.d-inline-block
-      | 食味： 
-      span.text-warning.font-weight-bold
-        = star(object)
-    p.d-sm-inline-block.ml-sm-4
-      | 時期：
-      = object.season
-      | 月
-    p
-      | 場所： 
-        #{object.place}
-    p
-      | 場所(詳細)：
-      = object.place_detail
-    p
-      | サイズ：
-        #{object.fish_size}
-      | cm
-    p.d-inline-block
-      | 熟成期間：
-      = object.preservation_period
-      | 日間
-    p.d-sm-inline-block.ml-sm-4
-      | 血抜き：
-        #{blood(object)}
-    p
-      | 調理方法：
-        #{object.recipe}
-    p.mb-0
-      |食味
-    p.border.rounded.p-2
-      = object.taste_imp
-    |
-    = time_ago_in_words(object.created_at)  
-    |前
-  - if params[:id].present?
-    - if review_correct_user
-      .card-footer.py-0.bg-white
-        p.d-inline-block.float-left.my-1
-          = link_to "編集" , "#"
-        p.d-inline-block.float-right.my-1
-          = link_to "削除" , "#"
+  .card
+    .card-header.text-center.py-1.bg-white = object.fish.name
+    .card-body
+      - if object.avatar.attached?
+        = image_tag object.avatar.variant(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid" 
+      -else
+        = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid" 
+      = image_tag object.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed if object.user.avatar.attached?
+      p 
+        = object.user.name
+      p.d-inline-block
+        | 食味： 
+        span.text-warning.font-weight-bold
+          = star(object)
+      p.d-sm-inline-block.ml-sm-4
+        | 時期：
+        = object.season
+        | 月
+      p
+        | 場所： 
+          #{object.place}
+      p
+        | 場所(詳細)：
+        = object.place_detail
+      p
+        | サイズ：
+          #{object.fish_size}
+        | cm
+      p.d-inline-block
+        | 熟成期間：
+        = object.preservation_period
+        | 日間
+      p.d-sm-inline-block.ml-sm-4
+        | 血抜き：
+          #{blood(object)}
+      p
+        | 調理方法：
+          #{object.recipe}
+      p.mb-0
+        |食味
+      p.border.rounded.p-2
+        = object.taste_imp
+      |
+      = time_ago_in_words(object.created_at)  
+      |前
+    - if params[:id].present?
+      - if review_correct_user
+        .card-footer.py-0.bg-white
+          p.d-inline-block.float-left.my-1
+            = link_to "編集" , "#"
+          p.d-inline-block.float-right.my-1
+            = link_to "削除" , review_path(object.id), method: :delete,
+                                       data: { confirm: "You sure?" }
+      end
     end
-  end

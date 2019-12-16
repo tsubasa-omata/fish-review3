@@ -4,15 +4,12 @@ class ReviewsController < ApplicationController
   
   def index
     @q = Review.ransack(params[:q])
-    @fishes = Fish.all
-    @reviews = @q.result.includes(:fish)
+    @reviews = @q.result.includes(:fish).page(params[:page]).per(20)
   end
   
   def show
     @review = Review.find_by(id: params[:id])
     @user = User.find_by(id: params[:id])
-    @reviews = @user.reviews
-    
   end
 
   def new
