@@ -3,3 +3,13 @@
     = @fish.name
   .row
     .col-12
+
+- if @reviews.any?
+    .row.justify-content-around
+      - @reviews.each do |review|   
+          .review-partial.col-12.col-md-6.p-3
+            .review-partial__box.shadow
+              == render "shared/index_review" , object: review
+              .review-partial__time
+                = time_ago_in_words(review.created_at) 
+                |前

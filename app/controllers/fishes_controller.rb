@@ -6,6 +6,7 @@ class FishesController < ApplicationController
 
   def show
     @fish = Fish.find_by(id: params[:id])
+    @reviews = @fish.reviews
   end
 
   private
