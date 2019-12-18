@@ -1,34 +1,50 @@
-.row
-  .col-4
-    .text-center.py-1 
-      = object.fish.name
+.review-partial__fish-name.text-center.font-weight-bold.py-2.border-bottom
+  p = object.fish.name
+.row.justify-content-center.px-4
+  .col-6.p-4
     - if object.avatar.attached?
-      = image_tag object.avatar.variant(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid" 
-    -else
-      = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid" 
+      = image_tag object.avatar.variant(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid img-thumbnail" 
+    - else
+      = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid img-thumbnail" 
     = image_tag object.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed if object.user.avatar.attached?
-  .col-4
-    .review-index__review
+  .col-6.p-4.review-index__review
+    .review-partial__user-avatar.pb-2
       - if object.user.avatar.attached?
         = image_tag object.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid user_image" 
-      -else
+      - else
         = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid user_image" 
-      
-    | 食味
-    span.text-warning.font-weight-bold
+    p 
+      span.review-partial__review-item-title 食味：
+      span.text-warning.font-weight-bold.review-partial__review-item
         = star(object)
+    p
+      span.review-partial__review-item-title サイズ：
+      span.review-partial__review-item
+        = object.fish_size
+        | cm
+    p
+      span.review-partial__review-item-title 時期：
+      span.review-partial__review-item
+        = object.season
+        | 月
+    p
+      span.review-partial__review-item-title 場所(詳細)：
+      span.review-partial__review-item
+        = object.place
+    p
+      span.review-partial__review-item-title 熟成期間：
+      span.review-partial__review-item
+        = object.preservation_period
+        | 日間
+    p
+      span.review-partial__review-item-title 血抜き：
+      span.review-partial__review-item
+        = blood(object) 
 
-    = object.fish_size
-    | cm
+  .col-11.p-2
+    | 調理方法：
+    span.review-partial__review-item
+      = object.recipe 
 
-    = object.season
-    | 月
-
-    = object.place
-
-  .col-4
-    | 調理方法
-    = object.recipe 
-
-    p.border.rounded.p-2
+    p.px-2.pt-1.pb-4
       = object.taste_imp

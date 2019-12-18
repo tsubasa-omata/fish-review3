@@ -35,40 +35,92 @@
  }
 
  html {
-   font-size: 16px;
-  
-   @media (min-width: 576px) {
+  background-color: #f7f7f7;
+  font-size: 8px;
+  @media (min-width: 576px) {
      font-size: 12px;
-   }
-  
-   @media (min-width: 768px) {
+  }
+  @media (min-width: 768px) {
      font-size: 12px;
-   }
+  }
+  @media (min-width: 992px) {
+    font-size: 12px;
+  }
+  @media (min-width: 1200px) {
+    font-size: 14px;
+  }
+}
 
-   @media (min-width: 992px) {
-      font-size: 14px;
-    }
-
-    @media (min-width: 1200px) {
-      font-size: 16px;
-    }
+ body{
+  background-color: #f7f7f7;
  }
 
- .card-columns {
-   @include media-breakpoint-only(sm) {
-      column-count: 1;
-    }
-    @include media-breakpoint-only(md) {
+ h1{
+  @media (min-width: 576px) {
+    font-size: 2em;
+    text-align:center;
+    margin-bottom:1em;
+    margin-top:1em;
+  }
+    font-size: 1em;
+    text-align:center;
+    margin-bottom:0.5em;
+    margin-top:0.5em;
+}
+
+.container{
+@media (min-width: 576px) {
+  width: 547px;
+}
+
+@media (min-width: 672px){
+  width: 638px;
+}
+
+@media (min-width: 768px) {
+  width: 730px;
+}
+
+@media (min-width: 880px){
+  width: 836px;
+}
+
+@media (min-width: 992px) {
+  width: 942px;
+ }
+
+ @media (min-width: 1096px) {
+  width: 1042px;
+}
+
+ @media (min-width: 1200px) {
+  width: 1140px;
+ }
+}
+
+.card-columns {
+  @include media-breakpoint-only(sm) {
+    column-count: 1;
+  }
+  @include media-breakpoint-only(md) {
       column-count: 2;
-    }
-   @include media-breakpoint-only(lg) {
+  }
+  @include media-breakpoint-only(lg) {
      column-count: 2;
-   }
-   @include media-breakpoint-only(xl) {
+  }
+  @include media-breakpoint-only(xl) {
      column-count: 3;
-   }
- }
+  }
+}
  
  .card p{
   margin-bottom:0.5rem;
+}
+
+.container{
+  background-color: #f7f7f7;
+}
+
+.review-partial{
+  border-radius:1em;
 }

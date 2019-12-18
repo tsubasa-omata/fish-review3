@@ -3,36 +3,91 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .review{
   h1{
-      font-size: 2em;
-      text-align:center;
-      margin-bottom:1em;
-      margin-top:1em;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 1em;
+    margin-top: 1em;
   }
   .text-center{
-      margin-top:4%;
+    margin-top: 4%;
   }
 }
 
-.review-index__review input{
-  position: absolute;
-  top: 50%; /*親要素を起点に上から50%*/
-  left: 50%;  /*親要素を起点に左から50%*/
-  transform: translateY(-50%) translateX(-50%); /*要素の大きさの半分ずつを戻す*/
-  -webkit-transform: translateY(-50%) translateX(-50%);
+.review-index__review {
+  p{
+    padding:0.3em;
+  }
 }
-
 .user_image {
   overflow: hidden;
-  width:50px;
-  height:50px;
-  border-radius:50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   // transform: translate(-50%, -50%);
   // -webkit-transform: translate(-50%, -50%);
 }
 
 .review__index-search-item {
-  display:block;
+  display: block;
   @media (min-width: 576px) {
     display: inline-block;
   }
+  input{
+    display: inline-block;
+  }
+}
+
+.review-partial{
+  background-color: #f7f7f7;
+  
+}
+
+.review-partial__box{
+  background-color: white;
+  border-radius: 1em;
+  height: 100%;
+  position: relative;
+}
+
+.review-partial__fish-name p{
+  font-size: 10px;
+  @media (min-width: 576px) {
+    font-size: 14px;
+  }
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
+  @media (min-width: 992px) {
+    font-size: 16px;
+  }
+  @media (min-width: 1200px) {
+    font-size: 18px;
+  }
+}
+
+.review-partial__time{
+  position: absolute;
+  bottom: 8px;
+  right: 15px;
+  color: #C0C0C0;
+}
+
+.review-partial__review-item{
+  font-size: 10px;
+  @media (min-width: 576px) {
+     font-size: 14px;
+  }
+  @media (min-width: 768px) {
+     font-size: 14px;
+  }
+  @media (min-width: 992px) {
+    font-size: 14px;
+  }
+  @media (min-width: 1200px) {
+    font-size: 16px;
+  }
+}
+
+.review-partial__review-item-title{
+  color: #C0C0C0;
 }
