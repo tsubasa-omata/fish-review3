@@ -5,6 +5,7 @@ class PasswordResetsController < ApplicationController
   before_action :check_expiration, only: [:edit, :update]
 
   def new
+    @user = User.new
   end
 
   def edit

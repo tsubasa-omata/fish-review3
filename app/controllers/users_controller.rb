@@ -42,14 +42,14 @@ def update
 end
 
 def following
-  @title = "フォロ一覧"
+  @title = "フォロ一 一覧"
   @user  = User.find(params[:id])
   @users = @user.following
   render 'show_follow2'
 end
 
 def followers
-  @title = "フォロワー一覧"
+  @title = "フォロワー 一覧"
   @user  = User.find(params[:id])
   @users = @user.followers
   render 'show_follow2'
