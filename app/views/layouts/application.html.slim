@@ -11,7 +11,7 @@ html
     /= render 'layout/shim' ブラウザ対応
   body
     == render 'layouts/header'
-    div.container
+    .container-fluid
       - flash.each do |message_type, message| 
         div class="alert" class="alert-#{message_type}"
           = message 

@@ -1,8 +1,50 @@
-h3 Micropost Feed
-- if @feed_items.present?
-  -@feed_items.each do |feed_item|
-    ol
-      == render 'shared/review' , object: feed_item
-      | Posted 
-      = time_ago_in_words(feed_item.created_at)  
-      | ago.
+- if logged_in?
+  .row.justify-content-center
+    .col-12.col-md-6.col-lg-6
+      .user__prof.row.p-3.m-3
+        .col-6.col-sm-3.px-2
+          - if current_user.avatar.attached?
+            = image_tag current_user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid user_image" 
+          - else
+            = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid user_image" 
+          p.text-center = current_user.name 
+          p.text-center = current_user.account_name
+        .col-6.col-sm-3.user__prof-follow-wrap.px-2
+          .user__prof-follow
+            .user__prof-follow-count.pt-2
+              == render "shared/profile"
+            /.user__prof-follow-form
+            /  == render "follow_form" , object: @user if logged_in? 
+        .user__prof-prof-wrap.px-2
+          .user__prof-prof.mb-3
+            = current_user.prof
+          .user__prof-edit
+            = link_to "編集" , edit_user_path(current_user)
+- else 
+  = search_form_for(@q, url:root_path) do |f|
+    .review__index-search.d-sm-flex.justify-content-around.mx-sm-3.mb-5.border-bottom.px-4.py-4.bg-gray
+      .review__index-search-item
+        = f.label :fish_id, "魚種　" ,class: "" 
+        = f.select :fish_id_eq, options_for_select(Fish.joins(:reviews).distinct.map{|fish| [fish.name , fish.id]},:selected =>"指定なし") ,{include_blank: true},class: "js-selectable mb-4"
+      .review__index-search-item    
+        = f.label :season, "時期(月)　" ,class: ""
+        = f.collection_select :season_eq, Review.select(:season).group(:season), :season, :season, :include_blank => '指定なし',  placeholder: "時期" , class: "col-10 col-sm-5 rounded-lg mb-4"
+      .review__index-search-item
+        = f.label :place, "場所　" ,class: ""
+        = f.collection_select :place_eq ,Review.select(:place).group(:place), :place,:place, placeholder: "場所" ,:include_blank => '指定なし', class: "col-10 col-sm-5 rounded-lg mb-4"
+      .review__index-search-item
+        = f.label :taste_level, "食味評価　" ,class: ""
+        = f.collection_select :taste_level_eq ,Review.select(:taste_level).group(:taste_level), :taste_level,:taste_level, placeholder: "食味評価" , :include_blank => '指定なし',class: "col-10 col-sm-5 rounded-lg mb-4"
+      .review__index-search-item
+        = f.submit "検索"  ,class: "ml-3 btn btn-success btn-sm mx-auto"
+  end
+      
+- if @reviews.any?
+  .row
+    - @reviews.each do |review|   
+        .review-partial.col-12.col-md-6.col-lg-4.p-3
+          .review-partial__box.shadow
+            == render "shared/index_review" , object: review
+            .review-partial__time
+              = time_ago_in_words(review.created_at) 
+              |前

@@ -68,34 +68,42 @@
     margin-top:0.5em;
 }
 
-.container{
-@media (min-width: 576px) {
-  width: 547px;
-}
+.container-fluid{
+  padding: 0;
+  @media (max-width: 576px) {
+    width: 90%;
+  }
+  @media (min-width: 576px) {
+    width: 558px;
+  }
 
-@media (min-width: 672px){
-  width: 638px;
-}
+  @media (min-width: 672px){
+    width: 651px;
+  }
 
-@media (min-width: 768px) {
-  width: 730px;
-}
+  @media (min-width: 768px) {
+    width: 744px;
+  }
 
-@media (min-width: 880px){
-  width: 836px;
-}
+  @media (min-width: 880px){
+    width: 853px;
+  }
 
-@media (min-width: 992px) {
-  width: 942px;
- }
+  @media (min-width: 992px) {
+    width: 962px;
+  }
 
- @media (min-width: 1096px) {
-  width: 1042px;
-}
+  @media (min-width: 1096px) {
+    width: 1082px;
+  }
 
- @media (min-width: 1200px) {
-  width: 1140px;
- }
+  @media (min-width: 1200px) {
+    width: 1164px;
+  }
+
+  @media (min-width: 1360px) {
+    width: 1332px;
+  }
 }
 
 .card-columns {
@@ -123,4 +131,8 @@
 
 .review-partial{
   border-radius:1em;
+}
+
+.user__prof{
+  border-radius: 1rem;
 }

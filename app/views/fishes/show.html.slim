@@ -1,15 +1,31 @@
 .container
   h1.mt-5.mb-5.text-center 
     = @fish.name
+  = search_form_for(@q, url:fish_path) do |f|
+    .review__index-search.d-sm-flex.justify-content-around.mx-sm-3.mb-5.border-bottom.px-4.py-4.bg-gray
+      .review__index-search-item    
+        = f.label :season, "時期(月)　" ,class: ""
+        = f.collection_select :season_eq , @fish.reviews.select(:season).group(:season), :season, :season, :include_blank => '指定なし',  placeholder: "時期" , class: "col-10 col-sm-5 rounded-lg mb-4"
+      .review__index-search-item
+        = f.label :place, "場所　" ,class: ""
+        = f.collection_select :place_eq , @fish.reviews.select(:place).group(:place), :place,:place, placeholder: "場所" ,:include_blank => '指定なし', class: "col-10 col-sm-5 rounded-lg mb-4"
+      .review__index-search-item
+        = f.label :taste_level, "食味評価　" ,class: ""
+        = f.collection_select :taste_level_eq , @fish.reviews.select(:taste_level).group(:taste_level), :taste_level,:taste_level, placeholder: "食味評価" , :include_blank => '指定なし',class: "col-10 col-sm-5 rounded-lg mb-4"
+      .review__index-search-item
+        = f.submit "検索"  ,class: "ml-3 btn btn-success btn-sm mx-auto"
+  end
   .row
     .col-12
-
-- if @reviews.any?
-    .row.justify-content-around
-      - @reviews.each do |review|   
-          .review-partial.col-12.col-md-6.p-3
-            .review-partial__box.shadow
-              == render "shared/index_review" , object: review
-              .review-partial__time
-                = time_ago_in_words(review.created_at) 
-                |前
+      - if @reviews.any?
+        .row
+          - @reviews.each do |review|   
+              .review-partial.col-12.col-md-6.col-lg-4.p-3
+                .review-partial__box.shadow
+                  == render "shared/index_review" , object: review
+                  .review-partial__time
+                    = time_ago_in_words(review.created_at) 
+                    |前
+      - else
+        p.text-center.fish-show__review-nil
+          | 投稿はまだありません

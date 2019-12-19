@@ -44,7 +44,6 @@
 
 .review-partial__box{
   background-color: white;
-  border-radius: 1em;
   height: 100%;
   position: relative;
 }
@@ -78,16 +77,24 @@
      font-size: 14px;
   }
   @media (min-width: 768px) {
-     font-size: 14px;
+     font-size: 13px;
   }
   @media (min-width: 992px) {
-    font-size: 14px;
+    font-size: 13px;
   }
   @media (min-width: 1200px) {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
 .review-partial__review-item-title{
   color: #C0C0C0;
+}
+
+.review-partial__review-item-taste{
+  word-wrap: break-word;
+}
+
+.review-partial__review-item-star{
+  -webkit-text-stroke: 1px #000;
 }

@@ -1,3 +1,4 @@
+h1.mt-5.mb-3.text-center 新規登録
 .row
   .col-md-6.offset-md-3
     = form_with model: @user, local: true do |f|
@@ -13,7 +14,7 @@
         = f.email_field :email, class: 'form-control' 
       .form-group  
         = f.label :prof , 'プロフィール'
-        = f.text_field :prof, class: 'form-control' 
+        = f.text_area :prof, class: 'form-control' 
       .form-group  
         = f.label :avatar , 'プロフィール写真'
         = f.file_field :avatar, class: 'form-control-file'
@@ -26,4 +27,3 @@
       .text-center
         = f.submit 'アカウントを作成', class: "btn btn-primary" 
 
-<%= select_tag :user, options_from_collection_for_select(@user, :id, :name), include_blank: true, class: "js-searchable" %>

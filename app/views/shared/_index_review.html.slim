@@ -1,13 +1,13 @@
-.review-partial__fish-name.text-center.font-weight-bold.py-2.border-bottom
+.review-partial__fish-name.text-center.py-2.mx-4.border-bottom
   p = object.fish.name
-.row.justify-content-center.px-4
-  .col-6.p-4
+.row.review-partial__row-wrap.justify-content-center.px-4
+  .col-6.p-3
     - if object.avatar.attached?
       = image_tag object.avatar.variant(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid img-thumbnail" 
     - else
       = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid img-thumbnail" 
     = image_tag object.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed if object.user.avatar.attached?
-  .col-6.p-4.review-index__review
+  .col-6.p-3.review-index__review
     .review-partial__user-avatar.pb-2
       - if object.user.avatar.attached?
         = image_tag object.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid user_image" 
@@ -15,7 +15,7 @@
         = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid user_image" 
     p 
       span.review-partial__review-item-title 食味：
-      span.text-warning.font-weight-bold.review-partial__review-item
+      span.text-warning.font-weight-bold.review-partial__review-item.review-partial__review-item-star
         = star(object)
     p
       span.review-partial__review-item-title サイズ：
@@ -41,10 +41,11 @@
       span.review-partial__review-item
         = blood(object) 
 
-  .col-11.p-2
+  .col-11.px-2.pt-1
     | 調理方法：
     span.review-partial__review-item
       = object.recipe 
 
-    p.px-2.pt-1.pb-4
-      = object.taste_imp
+    .review-partial__review-item-taste
+      p.px-2.pt-1.pb-4
+        = object.taste_imp

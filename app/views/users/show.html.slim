@@ -1,17 +1,35 @@
-.container
-  = @user.name 
-  = @user.email 
-  = @user.activated 
-  = @user.id 
-  = link_to "編集" , edit_user_path 
-  == render "follow_form" , object: @user if logged_in? 
-  == render "shared/profile"
-  - if @reviews.any?
-    .card-columns
-      - @reviews.each do |review|  
-        ol 
-          li
-            == render "shared/review" , object: review
-          
+.row.justify-content-center
+  .col-12.col-md-6.col-lg-6
+    .user__prof.row.p-3.m-3.rounded
+      .col-6.col-sm-3.px-2
+        
+        - if @user.avatar.attached?
+         = image_tag @user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid user_image" 
+        - else
+          = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid user_image" 
+        p.text-center = @user.name 
+        p.text-center = @user.account_name
+      .user__prof-follow-wrap.col-6.col-sm-3.px-2
+        .user__prof-follow
+          .user__prof-follow-count.pt-2
+            == render "shared/profile"
+          .user__prof-follow-form
+            == render "follow_form" , object: @user if logged_in? 
+
+      .user__prof-prof-wrap.col-12.col-sm-6.px-2
+        .user__prof-prof.mb-3
+          = @user.prof
+        .user__prof-edit
+          = link_to "編集" , edit_user_path 
+
+- if @reviews.any?
+    .row
+      - @reviews.each do |review|   
+          .review-partial.col-12.col-md-6.col-lg-4.p-3
+            .review-partial__box.shadow
+              == render "shared/index_review" , object: review
+              .review-partial__time
+                = time_ago_in_words(review.created_at) 
+                |前
 
 = paginate @reviews

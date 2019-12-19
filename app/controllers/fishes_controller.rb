@@ -6,8 +6,11 @@ class FishesController < ApplicationController
 
   def show
     @fish = Fish.find_by(id: params[:id])
-    @reviews = @fish.reviews
+    @q = @fish.reviews.ransack(params[:q])
+    @reviews = @q.result.includes(:fish).page(params[:page]).per(20)
   end
+
+  
 
   private
   def search_params

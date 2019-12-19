@@ -1,7 +1,7 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.show_follow{
+//.show_follow{
  /*
  .follow_list{
    align-items: center;
@@ -11,7 +11,7 @@
    margin:0 auto;
  }
  */
- #follow_form{
+ .follow_form{
    margin-left:0 auto;
    
  }
@@ -31,33 +31,64 @@
  }
  */
  
- .follow_list > div {
-   display: inline-flex;
-   padding: 10px;
- }
- .follow_list > div:nth-child(4n) {
-   color: lime;
- }
- 
- p.prof{
-   word-wrap: break-word;
- }
- 
- .follow_user{
-   padding:1vw;
- }
- 
- .follow_user > div {
-   padding:1vw;
-   
- }
- 
- input{
-   position: absolute;
-   top: 50%; /*親要素を起点に上から50%*/
-   left: 50%;  /*親要素を起点に左から50%*/
-   transform: translateY(-50%) translateX(-50%); /*要素の大きさの半分ずつを戻す*/
-   -webkit-transform: translateY(-50%) translateX(-50%);
- }
-
+.follow_list > div {
+  display: inline-flex;
+  padding: 10px;
 }
+.follow_list > div:nth-child(4n) {
+  color: lime;
+}
+ 
+  p.prof{
+    word-wrap: break-word;
+  }
+ 
+  .follow_user{
+    padding:1vw;
+  }
+ 
+  .follow_user > div {
+    padding:1vw;
+   
+  }
+ 
+
+  .follow_form input{
+    position: absolute;
+    top: 50%; /*親要素を起点に上から50%*/
+    left: 50%;  /*親要素を起点に左から50%*/
+    transform: translateY(-50%) translateX(-50%); /*要素の大きさの半分ずつを戻す*/
+    -webkit-transform: translateY(-50%) translateX(-50%);
+  }
+
+  .user__prof{
+    background-color: white;
+  }
+
+.user__prof-prof{
+  word-wrap: break-word;
+}
+
+.user__prof-prof-wrap{
+  position: relative;
+}
+
+.user__prof-edit{
+  font-size: 0.5rem;
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+}
+
+.user__prof-follow-wrap{
+  position: relative;
+}
+
+.user__prof-follow{
+  position: absolute;
+  top: 50%; /*親要素を起点に上から50%*/
+  left: 0%;  /*親要素を起点に左から50%*/
+  transform: translateY(-50%);  /*要素の大きさの半分ずつを戻す*/
+  -webkit-transform: translateY(-50%);
+}
+
