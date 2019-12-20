@@ -55,6 +55,10 @@
   background-color: #f7f7f7;
  }
 
+header{
+  background-color: #222222;
+ }
+
  h1{
   @media (min-width: 576px) {
     font-size: 2em;
@@ -135,4 +139,9 @@
 
 .user__prof{
   border-radius: 1rem;
+}
+
+.header__logo{
+  font-weight: 900;
+  font-size: 2rem;
 }

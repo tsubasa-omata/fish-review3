@@ -18,7 +18,7 @@
             p.prof
               = user.prof
 
-          .follow_form.col-sm-2.col-3.text-center
+          #follow_form.col-sm-2.col-3.text-center
             - if current_user.following?(user) 
               = form_with(model: current_user.active_relationships.find_by(followed_id: user.id),html: { method: :delete }) do |f| 
                 = f.submit "Unfollow", class: "btn btn-primary" 
