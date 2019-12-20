@@ -24,7 +24,6 @@ module UsersHelper
     else
       return "無し"
     end
-
   end
 
 end

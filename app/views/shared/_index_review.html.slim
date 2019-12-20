@@ -8,8 +8,8 @@
       = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid img-thumbnail" 
   .col-6.p-3.review-index__review
     .review-partial__user-avatar.pb-2
-      p.d-inline-block.text-dark
-      = link_to object.user.name , user_path(object.user) , class: "pr-2 text-dark"
+      p.d-inline-block.text-dark.review-partial__user-name
+        = link_to object.user.name , user_path(object.user) , class: "pr-2 text-dark"
       - if object.user.avatar.attached?
         = image_tag object.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "d-inline-block img-fluid user_image" 
       - else
@@ -32,6 +32,12 @@
       span.review-partial__review-item-title 獲れた場所：
       span.review-partial__review-item
         = object.place
+
+    p
+      span.review-partial__review-item-title 場所(詳細)：
+      span.review-partial__review-item
+        = object.place_detail
+
     p
       span.review-partial__review-item-title 熟成期間：
       span.review-partial__review-item
