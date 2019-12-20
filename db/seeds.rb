@@ -17,3 +17,13 @@ User.create!(
     password_confirmation: 'bbbbbb'
     
  )
+
+ User.create!(
+   email: 'dddddd@gmail.com',
+   name: '魚魚魚魚魚魚魚魚魚魚',
+   account_name: '魚魚魚魚魚魚魚魚魚魚',
+   activated: true,
+   password: 'dddddd',
+   password_confirmation: 'dddddd'
+   
+)

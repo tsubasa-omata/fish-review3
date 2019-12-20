@@ -56,8 +56,14 @@
  }
 
 header{
-  background-color: #222222;
+  background-color: #222222; 
  }
+
+ .header__logo{
+  font-weight: 900;
+  font-size: 2rem;
+  color: #FF5F17;
+}
 
  h1{
   @media (min-width: 576px) {
@@ -139,9 +145,4 @@ header{
 
 .user__prof{
   border-radius: 1rem;
-}
-
-.header__logo{
-  font-weight: 900;
-  font-size: 2rem;
 }

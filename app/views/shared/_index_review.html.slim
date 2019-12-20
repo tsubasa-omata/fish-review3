@@ -1,18 +1,19 @@
 .review-partial__fish-name.text-center.py-2.mx-4.border-bottom
-  p = object.fish.name
+  = link_to object.fish.name , fish_path(object.fish) , class: "text-dark"
 .row.review-partial__row-wrap.justify-content-center.px-4
   .col-6.p-3
     - if object.avatar.attached?
       = image_tag object.avatar.variant(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid img-thumbnail" 
     - else
       = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid img-thumbnail" 
-    = image_tag object.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed if object.user.avatar.attached?
   .col-6.p-3.review-index__review
     .review-partial__user-avatar.pb-2
+      p.d-inline-block.text-dark
+      = link_to object.user.name , user_path(object.user) , class: "pr-2 text-dark"
       - if object.user.avatar.attached?
-        = image_tag object.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid user_image" 
+        = image_tag object.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "d-inline-block img-fluid user_image" 
       - else
-        = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid user_image" 
+        = image_tag "noimage.png" ,class: "d-inline-block img-fluid user_image" 
     p 
       span.review-partial__review-item-title 食味：
       span.text-warning.font-weight-bold.review-partial__review-item.review-partial__review-item-star
@@ -28,7 +29,7 @@
         = object.season
         | 月
     p
-      span.review-partial__review-item-title 場所(詳細)：
+      span.review-partial__review-item-title 獲れた場所：
       span.review-partial__review-item
         = object.place
     p
@@ -41,7 +42,7 @@
       span.review-partial__review-item
         = blood(object) 
 
-  .col-11.px-2.pt-1
+  .col-11.px-2.pt-1.pb-2
     | 調理方法：
     span.review-partial__review-item
       = object.recipe 

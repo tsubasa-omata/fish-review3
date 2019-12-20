@@ -4,7 +4,7 @@
     .review__index-search.d-sm-flex.justify-content-around.mx-sm-3.mb-5.border-bottom.px-4.py-4.bg-gray
       .review__index-search-item
         = f.label :fish_id, "魚種　" ,class: "" 
-        = f.select :fish_id_eq, options_for_select(Fish.joins(:reviews).distinct.map{|fish| [fish.name , fish.id]},:selected =>"指定なし"), { include_blank: '指定なし' }, class: "js-selectable mb-4"
+        = f.select :fish_id_eq, options_for_select(Fish.joins(:reviews).distinct.map{|fish| [fish.name , fish.id]}), { include_blank: '指定なし' }, class: "js-selectable mb-4"
       .review__index-search-item    
         = f.label :season, "時期(月)　" ,class: ""
         = f.collection_select :season_eq, Review.select(:season).group(:season), :season, :season, :include_blank => '指定なし',  placeholder: "時期" , class: "col-10 col-sm-5 rounded-lg mb-4"
