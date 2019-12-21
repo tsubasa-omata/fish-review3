@@ -39,7 +39,22 @@
 
 .review-partial{
   background-color: #f7f7f7;
-  
+}
+
+.review-partial__row-wrap{
+  position: relative;
+  z-index: 1;
+}
+
+.review-partial__entire-link{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent:-999px;
+  z-index: 2; 
+  display: block;
 }
 
 .review-partial__box{
@@ -50,6 +65,8 @@
 
 .review-partial__fish-name {
   font-size: 10px;
+  position: relative; 
+  z-index: 3;
   @media (min-width: 576px) {
     font-size: 14px;
   }
@@ -101,6 +118,8 @@
 
 .review-partial__user-name{
   font-size: 8px;
+  position: relative;
+  z-index: 3;
   @media (min-width: 576px) {
      font-size: 12px;
   }
@@ -113,4 +132,20 @@
   @media (min-width: 1200px) {
     font-size: 13px;
   }
+}
+
+.review-partial-show__time{
+  position: absolute;
+  bottom: 25px;
+  right: 15px;
+  color: #C0C0C0;
+}
+
+.review-partial__edit-edit{
+  text-align: left;
+  float: left; 
+}
+
+.review-partial__edit-delete{
+  text-align: right;
 }

@@ -1,6 +1,7 @@
 .review-partial__fish-name.text-center.py-2.mx-4.border-bottom
   = link_to object.fish.name , fish_path(object.fish) , class: "text-dark"
 .row.review-partial__row-wrap.justify-content-center.px-4
+  = link_to "" , review_path(object) , class: "review-partial__entire-link"
   .col-6.p-3
     - if object.avatar.attached?
       = image_tag object.avatar.variant(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid img-thumbnail" 
