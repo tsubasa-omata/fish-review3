@@ -4,8 +4,8 @@ User.create!(
     account_name: 'taro',
     activated: true,
     password: 'aaaaaa',
-    password_confirmation: 'aaaaaa'
-    
+    password_confirmation: 'aaaaaa',
+    admin: true
  )
 
  User.create!(

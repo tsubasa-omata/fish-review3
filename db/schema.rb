@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_044354) do
+ActiveRecord::Schema.define(version: 2019_12_24_095658) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2019_12_21_044354) do
     t.datetime "reset_sent_at"
     t.string "picture"
     t.text "prof"
+    t.boolean "admin", default: false
   end
 
 end
