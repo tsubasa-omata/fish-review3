@@ -34,6 +34,9 @@ gem 'ransack'
 
 gem "jquery-turbolinks"
 gem "select2-rails"
+
+gem 'font-awesome-rails'
+#gem 'font-awesome-sass', '~> 5.4.1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes

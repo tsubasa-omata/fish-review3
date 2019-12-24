@@ -16,6 +16,7 @@
  *= require_self
  */
  @import "bootstrap";
+ @import 'font-awesome';
  
  li{
     list-style: none;
@@ -145,4 +146,10 @@ header{
 
 .user__prof{
   border-radius: 1rem;
+}
+
+.nav-item{
+  a{
+  color: white !important;
+  }
 }
