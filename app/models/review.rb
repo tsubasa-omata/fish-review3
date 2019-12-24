@@ -2,6 +2,7 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :fish
   has_one_attached :avatar
+  has_many :comments, dependent: :destroy
   
   default_scope -> { order(created_at: :desc) }
   with_options presence: true do

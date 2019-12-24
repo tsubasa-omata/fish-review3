@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :relationships, only: [:create, :destroy]
   resources :fishes, only: [:index, :show]
+
+  resources :reviews do
+    resources :comments, only: [:create, :destroy]
+  end
+  
   namespace :admin do
     get    'users/edit' => 'users#edit'
     delete 'users/:id' => 'users#destroy'

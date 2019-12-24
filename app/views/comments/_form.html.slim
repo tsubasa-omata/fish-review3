@@ -1,0 +1,7 @@
+= form_with( model: [review, comment]) do |f| 
+  .container
+    .comment-form-partial.text-center.jumbotron.py-1.px-0
+      = f.text_area :content, id: "textarea",  class: "textarea col-12 pb-2" , placeholder: "コメントを入力..." 
+        
+  = f.submit "コメントする", class: "btn btn-primary"
+

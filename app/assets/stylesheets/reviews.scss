@@ -149,3 +149,26 @@
 .review-partial__edit-delete{
   text-align: right;
 }
+
+.reviews-new__need{
+  background-color: #FFF0F5 !important;
+}
+.reviews-new__optional{
+  background-color: #F0FFFF !important;
+}
+
+.reviews-new__need-word{
+  color: white;
+  background-color:#FF6666;
+  border-radius: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.reviews-new__optional-word{
+  color: white;
+  background-color:#0099FF;
+  border-radius: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
+}

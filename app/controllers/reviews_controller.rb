@@ -8,8 +8,15 @@ class ReviewsController < ApplicationController
   end
   
   def show
-    @review = Review.find_by(id: params[:id])
+    @review = Review.find(params[:id])
     @user = User.find_by(id: params[:id])
+    @comment = Comment.new
+    @comments = @review.comments
+
+    #@review = Review.find_by(id: params[:id])
+    #@user = User.find_by(id: params[:id])
+    #@comment = @review.comments.build
+    #@comments = @review.comments.page(params[:page]).per(24)
   end
 
   def new

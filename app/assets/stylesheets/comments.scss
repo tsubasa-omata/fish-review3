@@ -1,0 +1,43 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.comment-partial__time{
+  color: #C0C0C0;
+}
+
+.comment-partial__wrap{
+  display: flex;
+}
+
+.comment-partial__user-account-name{
+  margin-left: 0.3rem;
+  a{
+    color: #C0C0C0;
+  }
+}
+
+.comment-partial__user_name{
+  a{
+    color: black;
+  }
+}
+
+.textarea{
+  background-color: #C0C0C0;
+  border-radius: 5px;
+  background-color: transparent;
+  border: none;
+  &:focus {
+    
+    outline: 0;
+    box-shadow: none;
+  }
+  
+}
+textarea{
+  resize: none !important;
+}
+
+.comment-form-partial{
+  
+}

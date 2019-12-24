@@ -1,0 +1,28 @@
+- if comments.any? 
+  - comments.order(created_at: :desc).each do |comment|
+    .comment-index.mt-3.pb-1.border-bottom
+      - unless comment.id.nil?
+        .comment-partial__wrap
+          .user_image.d-inline-block.mr-3
+            - if comment.user.avatar.attached?
+              = image_tag comment.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "d-inline-block img-fluid user_image" 
+            - else
+              = image_tag "noimage.png" ,class: "d-inline-block img-fluid user_image" 
+          .comment-partial__content-wrap
+            .comment-partial__user_name.d-inline-block 
+              = link_to comment.user.name, user_path(comment.user.id) 
+            .comment-partial__user-account-name.d-inline-block 
+              = link_to comment.user.account_name, user_path(comment.user.id) 
+            .comment-partial__content.mt-2
+              = comment.content 
+            
+        .comment-partial__sub-wrap.text-right
+          .comment-partial__time.d-inline-block
+            = time_ago_in_words(comment.created_at) 
+            |前
+          - if comment.user == current_user 
+            p.d-inline-block.ml-2
+              = link_to '削除', review_comment_path(comment.review_id, comment.id), method: :delete,  data: { confirm: "この投稿を削除しますか?" }, remote: true
+- else 
+  .comment-partial__no-comment.text-center.mt-4
+    p コメントはまだありません
