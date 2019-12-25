@@ -15,6 +15,16 @@ User.create!(
     activated: true,
     password: 'bbbbbb',
     password_confirmation: 'bbbbbb'
+ )
+
+    User.create!(
+      email: 'guest@example.jp',
+      name: 'Guest User',
+      account_name: '@geust',
+      activated: true,
+      prof: "ゲストユーザー ",
+      password: 'xxxxxx',
+      password_confirmation: 'xxxxxx'
     
  )
 

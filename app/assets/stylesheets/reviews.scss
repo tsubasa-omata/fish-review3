@@ -91,16 +91,16 @@
 .review-partial__review-item{
   font-size: 10px;
   @media (min-width: 576px) {
-     font-size: 14px;
-  }
-  @media (min-width: 768px) {
      font-size: 13px;
   }
+  @media (min-width: 768px) {
+     font-size: 12px;
+  }
   @media (min-width: 992px) {
-    font-size: 13px;
+    font-size: 12px;
   }
   @media (min-width: 1200px) {
-    font-size: 15px;
+    font-size: 13px;
   }
 }
 

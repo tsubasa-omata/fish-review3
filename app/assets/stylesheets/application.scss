@@ -65,6 +65,9 @@ header{
   font-size: 2rem;
   color: #FF5F17;
   line-height: 1em;
+  @media (max-width: 576px) {
+    font-size: 2.5rem;
+  }
 }
 
  h1{
@@ -118,25 +121,6 @@ header{
   }
 }
 
-.card-columns {
-  @include media-breakpoint-only(sm) {
-    column-count: 1;
-  }
-  @include media-breakpoint-only(md) {
-      column-count: 2;
-  }
-  @include media-breakpoint-only(lg) {
-     column-count: 2;
-  }
-  @include media-breakpoint-only(xl) {
-     column-count: 3;
-  }
-}
- 
- .card p{
-  margin-bottom:0.5rem;
-}
-
 .container{
   background-color: #f7f7f7;
 }
@@ -155,8 +139,21 @@ header{
   }
 }
 
-.header__sub-title{
+span.header__sub-title {
   color: #FFFFEE;
+  font-size: 6px ;
+  @media (min-width: 576px) {
+     font-size: 8px;
+  }
+  @media (min-width: 768px) {
+     font-size: 9px;
+  }
+  @media (min-width: 992px) {
+    font-size: 9px;
+  }
+  @media (min-width: 1200px) {
+    font-size: 11px;
+  }
 }
 
 .navbar__logo-block{
@@ -166,3 +163,4 @@ header{
 .custom-hamburger{
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
+
