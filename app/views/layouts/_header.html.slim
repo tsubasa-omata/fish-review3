@@ -28,8 +28,9 @@ header
             .dropdown-menu
               = link_to "ユーザー検索",   '#' ,class: "dropdown-item"
               = link_to "投稿検索",   '#' ,class: "dropdown-item"
-          li.nav-item.ml-1.ml-xl-3
-            = link_to "プロフィール編集" , edit_user_path(current_user),class: "nav-link"
+          - unless current_user.account_name == "@guest"
+            li.nav-item.ml-1.ml-xl-3
+              = link_to "プロフィール編集" , edit_user_path(current_user),class: "nav-link"
           li.nav-item.ml-1.ml-xl-3
             = link_to "ログアウト" , logout_path ,method: :delete ,class: "nav-link"
         - else

@@ -19,10 +19,10 @@
           p.sinki
             | 新規ユーザーの方は 
             = link_to "今すぐ登録！", new_user_path 
-        .text-center.mt-5.pt-3
-          = form_with scope: :session, url: login_path , local: true do |f| 
-            = f.hidden_field :email, id:"input_field", value: "guest@example.jp"
-            = f.hidden_field :password, id:"input_field", value: "xxxxxx"
-            = f.submit "簡単ログイン", class:"btn btn-primary", id:"easy_login"
-            p.sinki
-              | すぐに全機能をお試しになりたい場合は、こちらからゲストユーザーとしてログインできます。
+      .text-center.mt-5.pt-3
+        = form_with scope: :session, url: login_path , local: true do |f| 
+          = f.hidden_field :email, id:"input_field", value: "guest@example.jp"
+          = f.hidden_field :password, id:"input_field", value: "xxxxxx"
+          = f.submit "簡単ログイン", class:"btn btn-primary", id:"easy_login"
+          p.sinki
+            | すぐに全機能をお試しになりたい場合は、こちらからゲストユーザーとしてログインできます。
