@@ -1,7 +1,7 @@
 .review  
   h1 投稿画面
-  div.row
-    div.col-md-6.offset-md-3
+  .row
+    .col-md-6.offset-md-3
       = form_with model: @review, local: true do |f|
         == render "shared/error_messages" , object: f.object
         .req
