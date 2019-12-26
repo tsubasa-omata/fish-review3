@@ -8,13 +8,17 @@
     - else
       = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid img-thumbnail" 
   .col-6.p-3.review-index__review
-    .review-partial__user-avatar.pb-2
-      p.d-inline-block.text-dark.review-partial__user-name
-        = link_to object.user.name , user_path(object.user) , class: "pr-2 text-dark"
-      - if object.user.avatar.attached?
-        = image_tag object.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "d-inline-block img-fluid user_image" 
-      - else
-        = image_tag "noimage.png" ,class: "d-inline-block img-fluid user_image" 
+    .review-partial__user-info.pb-2.d-flex
+      .review-partial__user-avatar
+        - if object.user.avatar.attached?
+          = image_tag object.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "d-inline-block user_image" 
+        - else
+          = image_tag "noimage.png" ,class: "d-inline-block img-fluid user_image" 
+      .review-partial__user-name-wrap
+        p.text-dark.review-partial__user-name.text-truncate
+          = link_to object.user.name , user_path(object.user) , class: "pl-2 text-dark"
+        p.text-dark.review-partial__user-account_name.text-truncate
+          = link_to object.user.name , user_path(object.user) , class: "pl-2"
     p 
       span.review-partial__review-item-title 食味：
       span.text-warning.font-weight-bold.review-partial__review-item.review-partial__review-item-star

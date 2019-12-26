@@ -117,6 +117,9 @@
 }
 
 .review-partial__user-name{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 8px;
   position: relative;
   z-index: 3;
@@ -132,6 +135,35 @@
   @media (min-width: 1200px) {
     font-size: 13px;
   }
+}
+
+.review-partial__user-account_name{
+  a{
+  color: #C0C0C0;
+  }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 8px;
+  position: relative;
+  z-index: 3;
+  @media (min-width: 576px) {
+     font-size: 12px;
+  }
+  @media (min-width: 768px) {
+     font-size: 11px;
+  }
+  @media (min-width: 992px) {
+    font-size: 11px;
+  }
+  @media (min-width: 1200px) {
+    font-size: 13px;
+  }
+}
+
+.review-partial__user-name-wrap{
+  overflow: hidden;
+  width: 100%;
 }
 
 .review-partial-show__time{
