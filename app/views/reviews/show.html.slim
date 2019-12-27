@@ -12,13 +12,14 @@
         p.review-partial__edit-delete.mr-3
           = link_to "削除" , review_path , method: :delete , data: { confirm: "この投稿を削除しますか?" }
 .div.mt-5
-  #comments_area.row.justify-content-center
+  .row.justify-content-center
     .col-12.col-md-8.col-lg-7
       p.text-center.mb-3 
        |コメント
       - if logged_in?
         == render partial: 'comments/form', locals: { comment: @comment, review: @review }
-        == render partial: 'comments/index', locals: { comments: @comments } 
+        #comments_area
+          == render partial: 'comments/index', locals: { comments: @comments } 
       - else 
         p.text-center.mb-3.text-muted
           |コメントするにはログインしてください

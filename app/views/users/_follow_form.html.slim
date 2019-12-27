@@ -1,5 +1,5 @@
 - unless current_user?(object) 
-  #follow_form
+  div id="follow_form_#{object.id}"
     - if current_user.following?(object) 
       = render 'unfollow' , object: object
     - else 
