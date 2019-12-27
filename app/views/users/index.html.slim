@@ -1,6 +1,6 @@
 - provide :title, "すべてのユーザー "
 .container
-  h1.mt-5.mb-5.text-center ユーザー一覧
+  h1.mt-5.mb-5.text-center.font-weight-bold ユーザー一覧
   .row
     .col-12.text-center.mb-3
       = search_form_for(@q, url:users_path) do |f|
