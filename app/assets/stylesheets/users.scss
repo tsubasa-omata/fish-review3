@@ -49,7 +49,6 @@
  
   .follow_user > div {
     padding:1vw;
-   
   }
  
 
@@ -82,6 +81,9 @@
 
 .user__prof-follow-wrap{
   position: relative;
+  @media (min-width: 576px) {
+  border-right:solid 1px #EEEEEE;
+  }
 }
 
 .user__prof-follow{
@@ -96,4 +98,53 @@
   a{
     float: right;
   }
+}
+
+.user__profile-name-wrap{
+  overflow: hidden;
+  width: 100%;
+}
+
+.user__profile-name{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 8px;
+  @media (min-width: 576px) {
+    font-size: 12px;
+ }
+ @media (min-width: 768px) {
+    font-size: 11px;
+ }
+ @media (min-width: 992px) {
+   font-size: 11px;
+ }
+ @media (min-width: 1200px) {
+   font-size: 13px;
+ }
+}
+
+.user__profile-accountname{
+  color: #C0C0C0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 8px;
+  @media (min-width: 576px) {
+     font-size: 12px;
+  }
+  @media (min-width: 768px) {
+     font-size: 11px;
+  }
+  @media (min-width: 992px) {
+    font-size: 11px;
+  }
+  @media (min-width: 1200px) {
+    font-size: 13px;
+  }
+}
+
+.stats{
+  margin: 0 auto;
+  width: 100%;
 }

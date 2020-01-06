@@ -20,7 +20,7 @@ User.create!(
     User.create!(
       email: 'guest@example.jp',
       name: 'Guest User',
-      account_name: '@geust',
+      account_name: '@guest',
       activated: true,
       prof: "ゲストユーザー ",
       password: 'xxxxxx',

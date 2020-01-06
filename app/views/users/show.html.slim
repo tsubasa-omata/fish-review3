@@ -1,25 +1,22 @@
 - provide :title, "#{@user.name}#{@user.account_name}"
 .row.justify-content-center
-  .col-12.col-md-8.col-lg-8
-    .user__prof.row.p-3.m-3.rounded
-      .col-6.col-sm-3.px-2
-        
-        - if @user.avatar.attached?
-         = image_tag @user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid user_image" 
-        - else
-          = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid user_image" 
-        p.text-center = @user.name 
-        p.text-center = @user.account_name
-      .user__prof-follow-wrap.col-6.col-sm-3.px-2
-        .user__prof-follow
-          .user__prof-follow-count.pt-2
+    .col-12.col-md-8.col-lg-8.px-0
+      .row.user__prof.p-3.m-3.justify-content-center
+        .col-6.col-sm-3.px-2.user__profile-name-wrap
+          - if @user.avatar.attached?
+            = image_tag @user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid user_image" 
+          - else
+            = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid user_image" 
+          p.text-center.mt-2.user__profile-name = @user.name 
+          p.text-center.mt-1.user__profile-accountname = @user.account_name
+        .col-5.col-sm-2.user__prof-follow-wrap.px-1.mr-3
+          .user__prof-follow
             == render "shared/profile"
-          .user__prof-follow-form
-            == render "follow_form" , object: @user if logged_in? 
-
-      .user__prof-prof-wrap.col-12.col-sm-6.px-2
-        .user__prof-prof.mb-3
-          = @user.prof
+            .user__prof-follow-form.pt-1
+              == render "follow_form" , object: @user if logged_in? 
+        .col-12.col-sm-6.user__prof-prof-wrap.px-2
+          .user__prof-prof.mb-4.mt-1
+            = @user.prof
         - if review_correct_user
           .user__prof-edit
             = link_to "編集" , edit_user_path(current_user)

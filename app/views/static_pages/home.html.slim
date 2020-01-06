@@ -1,22 +1,21 @@
 - if logged_in?
   .row.justify-content-center
-    .col-12.col-md-8.col-lg-8
-      .row.user__prof.p-3.m-3
-        .col-6.col-sm-3.px-2
+    .col-12.col-md-8.col-lg-8.px-0
+      .row.user__prof.p-3.m-3.justify-content-center
+        .col-6.col-sm-3.px-2.user__profile-name-wrap
           - if current_user.avatar.attached?
             = image_tag current_user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid user_image" 
           - else
             = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid user_image" 
-          p.text-center = current_user.name 
-          p.text-center = current_user.account_name
-        .col-6.col-sm-3.user__prof-follow-wrap.px-2
+          p.text-center.mt-2.user__profile-name = current_user.name 
+          p.text-center.mt-1.user__profile-accountname = current_user.account_name
+        .col-5.col-sm-2.user__prof-follow-wrap.px-1.mr-3
           .user__prof-follow
-            .user__prof-follow-count.pt-2
-              == render "shared/profile"
+            == render "shared/profile"
             /.user__prof-follow-form
             /  == render "follow_form" , object: @user if logged_in? 
         .col-12.col-sm-6.user__prof-prof-wrap.px-2
-          .user__prof-prof.mb-3
+          .user__prof-prof.mb-4.mt-1
             = current_user.prof
           .user__prof-edit
             = link_to "編集" , edit_user_path(current_user)

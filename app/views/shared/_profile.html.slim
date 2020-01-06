@@ -1,13 +1,14 @@
 - @user ||= current_user 
-.stats
+.stats.d-inline-block
   a href=following_user_path(@user)
-    strong id="following"  class="stat"
+    strong id="following"  class="stat d-inline-block"
       = @user.following.count
     | フォロー
   br
   a href=followers_user_path(@user)
-    strong id="followers" class="stat"
+    strong id="followers" class="stat mt-1 d-inline-block"
       = @user.followers.count 
     | フォロワー
 
     /shared/stats
+    
