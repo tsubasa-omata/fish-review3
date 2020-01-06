@@ -22,14 +22,15 @@
           .col-sm-2.col-8.nameinfo
             p
               = user.name 
-            p
+            p.user-index__user-account-name
               = user.account_name
           .col-sm-6.col-12.text-left.overflow-auto.border
             p.prof
               = user.prof
 
-          .user__prof-follow-form
-            == render "follow_form" , object: user if logged_in?
+          .col-sm-2.col-12.user__prof-follow-form-wrap
+            .user__prof-follow-form.text-center
+              == render "follow_form" , object: user if logged_in?
               //  #follow_form.col-sm-2.col-3.text-center
                   - if current_user.following?(user) 
                     = form_with(model: current_user.active_relationships.find_by(followed_id: user.id),html: { method: :delete }) do |f| 

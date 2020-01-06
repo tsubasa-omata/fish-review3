@@ -12,7 +12,7 @@
         .col-5.col-sm-2.user__prof-follow-wrap.px-1.mr-3
           .user__prof-follow
             == render "shared/profile"
-            .user__prof-follow-form.pt-1
+            .user__prof-follow-form-show.pt-1
               == render "follow_form" , object: @user if logged_in? 
         .col-12.col-sm-6.user__prof-prof-wrap.px-2
           .user__prof-prof.mb-4.mt-1
