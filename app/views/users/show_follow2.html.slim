@@ -10,10 +10,10 @@
             -else
               = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid user_image" 
           .col-sm-2.col-8.nameinfo
-            p
-              = user.name 
-            p
-              = user.account_name
+            p.show_follow__user-name
+              = link_to user.name , user_path(user) , class: "text-dark"
+            p.show_follow__user-account-name
+              = link_to user.account_name , user_path(user)
           .col-sm-6.col-12.text-left.overflow-auto.border
             p.prof
               = user.prof
