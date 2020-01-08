@@ -12,4 +12,8 @@ module ReviewsHelper
     end
   end
 
+  def correct_user
+    @user.id == current_user.id  
+  end
+
 end

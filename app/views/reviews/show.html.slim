@@ -6,11 +6,12 @@
       .review-partial-show__time
         = time_ago_in_words(@review.created_at) 
         |前
-      .review-partial__edit.mt-5.mb-2
-        p.review-partial__edit-edit.ml-3
-          = link_to "編集" , edit_review_path(@review)
-        p.review-partial__edit-delete.mr-3
-          = link_to "削除" , review_path , method: :delete , data: { confirm: "この投稿を削除しますか?" }
+      - if logged_in? && correct_user
+        .review-partial__edit.mt-5.mb-2  
+          p.review-partial__edit-edit.ml-3
+            = link_to "編集" , edit_review_path(@review)
+          p.review-partial__edit-delete.mr-3
+            = link_to "削除" , review_path , method: :delete , data: { confirm: "この投稿を削除しますか?" }
 .div.mt-5
   .row.justify-content-center
     .col-12.col-md-8.col-lg-7
