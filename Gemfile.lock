@@ -281,6 +281,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    seed_dump (3.3.1)
+      activerecord (>= 4)
+      activesupport (>= 4)
     select2-rails (4.0.3)
       thor (~> 0.14)
     selenium-webdriver (3.142.6)
@@ -384,6 +387,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   sassc-rails
+  seed_dump
   select2-rails
   selenium-webdriver
   slim-rails
