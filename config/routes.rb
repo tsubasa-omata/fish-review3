@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+
+  post    'like/create'=> 'like#create'
+  delete  'like/:id'   => 'like#destroy'
  
   #get 'scrip/sc' => 'scrip#sc'
   resources :users do
