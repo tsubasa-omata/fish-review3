@@ -20,15 +20,15 @@
             -else
               = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid user_image" 
           .col-sm-2.col-8.nameinfo
-            p
-              = user.name 
-            p.user-index__user-account-name
-              = user.account_name
+            p.show_follow__user-name
+              = link_to user.name , user_path(user) , class: "text-dark"
+            p.show_follow__user-account-name
+              = link_to user.account_name , user_path(user)
           .col-sm-6.col-12.text-left.overflow-auto.border
             p.prof
               = user.prof
 
-          .col-sm-2.col-12.user__prof-follow-form-wrap
+          .col-sm-2.col-12.user__prof-follow-form-wrap.text-center
             .user__prof-follow-form.text-center
               == render "follow_form" , object: user if logged_in?
               //  #follow_form.col-sm-2.col-3.text-center
@@ -42,3 +42,4 @@
           - if current_user.admin? && !current_user?(user)
             .col-12.text-right
               = link_to "削除", user, method: :delete, data: { confirm: "ユーザーを削除しますか?" }, class: "text-right"
+= paginate @users
