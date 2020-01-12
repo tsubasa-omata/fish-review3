@@ -88,6 +88,13 @@
   color: #C0C0C0;
 }
 
+.review-partial__like{
+  position: absolute;
+  bottom: 8px;
+  left: 15px;
+  color: #C0C0C0;
+}
+
 .review-partial__review-item{
   font-size: 10px;
   @media (min-width: 576px) {

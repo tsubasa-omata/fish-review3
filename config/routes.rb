@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :relationships, only: [:create, :destroy]
   resources :fishes, only: [:index, :show]
-
+  resources :likes, only: [:create, :destroy]
   resources :reviews do
     resources :comments, only: [:create, :destroy]
   end
@@ -21,9 +21,6 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-
-  post    'like/create'=> 'like#create'
-  delete  'like/:id'   => 'like#destroy'
  
   #get 'scrip/sc' => 'scrip#sc'
   resources :users do

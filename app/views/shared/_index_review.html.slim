@@ -59,5 +59,12 @@
       = object.recipe 
 
     .review-partial__review-item-taste
-      p.px-2.pt-1.pb-4
+      p.px-2.pt-1.pb-5
         = object.taste_imp
+
+.review-partial__time
+  = time_ago_in_words(object.created_at) 
+  |前
+.review-partial__like
+  |like
+/== render "likes/like", object: object
