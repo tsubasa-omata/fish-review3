@@ -58,6 +58,11 @@ RSpec.describe User, type: :model do
         expect(FactoryBot.build(:user, email: invalid_address)).to be_invalid
       end
     end
+    it 'メールアドレスは全て小文字で保存されること' do
+      @user.email = 'Foo@ExAMPle.CoM'
+      @user.save!
+      expect(@user.reload.email).to eq 'foo@example.com'
+    end
   end
 
   context " profについて " do
@@ -81,5 +86,28 @@ RSpec.describe User, type: :model do
       expect(@user).to be_invalid
     end
   end
-  
+
+  #createだから@userを利用していない
+  context " その他 " do
+    it " 削除すると関連する投稿が削除されること " do
+      user = FactoryBot.create(:user)
+      review = FactoryBot.create(:review, user: user)
+      expect{ user.destroy }.to change{ Review.count }.by(-1)
+    end
+    it '削除するとフォロー中のユーザーとの関係も削除されること' do
+      user = FactoryBot.create(:user)
+      following_user = FactoryBot.create(:user)
+      user.follow(following_user)
+      expect{ user.destroy }.to change{ following_user.followers.count }.by(-1)
+      #from(A).to(B)でも可
+    end
+    it '削除するとフォロワーのユーザーとの関係も削除されること' do
+      user = FactoryBot.create(:user)
+      followed_user = FactoryBot.create(:user)
+      followed_user.follow(user)
+      expect{ user.destroy }.to change{ followed_user.following.count }.by(-1)
+    end
+  end
+   
+
 end
