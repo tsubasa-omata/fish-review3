@@ -1,3 +1,4 @@
+/objectにはreviewインスタンスが入っている
 .review-partial__fish-name.text-center.py-2.mx-4.border-bottom
   = link_to object.fish.name , fish_path(object.fish) , class: "text-dark"
 .row.review-partial__row-wrap.justify-content-center.px-4
@@ -66,5 +67,4 @@
   = time_ago_in_words(object.created_at) 
   |前
 .review-partial__like
-  |like
-/== render "likes/like", object: object
+  == render "likes/like", object: object
