@@ -3,7 +3,7 @@
   .review-partial.col-12.col-md-8.col-lg-7.p-3
     .review-partial__box.shadow
       == render "shared/index_review" , object: @review
-      .review-partial-show__time
+      /.review-partial-show__time
         = time_ago_in_words(@review.created_at) 
         |前
       - if logged_in? && correct_user

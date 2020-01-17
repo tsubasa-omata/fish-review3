@@ -83,15 +83,15 @@
 
 .review-partial__time{
   position: absolute;
-  bottom: 8px;
-  right: 15px;
+  bottom: 0.5rem;
+  right: 0.5rem;
   color: #C0C0C0;
 }
 
 .review-partial__like{
   position: absolute;
-  bottom: 8px;
-  left: 15px;
+  bottom: 0.5rem;
+  left: 0.5rem;
   color: #C0C0C0;
 }
 
@@ -183,10 +183,16 @@
 .review-partial__edit-edit{
   text-align: left;
   float: left; 
+  a{
+  margin-left:6rem;
+  }
 }
 
 .review-partial__edit-delete{
   text-align: right;
+  a{
+    margin-right:6rem;
+    }
 }
 
 .reviews-new__need{

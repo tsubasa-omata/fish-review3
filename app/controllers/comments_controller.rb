@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to @review }
         format.js
       else
+        render :shared/error, status: :unprocessable_entity
         format.html { redirect_to @review }
       end
     end
