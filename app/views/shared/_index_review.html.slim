@@ -2,7 +2,7 @@
 .review-partial__fish-name.text-center.py-2.mx-4.border-bottom
   = link_to review.fish.name , fish_path(review.fish) , class: "review-partial__fish-name-color"
 .row.review-partial__row-wrap.justify-content-center.px-4
-  = link_to "" , review_path(review) , class: "review-partial__entire-link-a"
+  = link_to "" , review_path(review) , class: "review-partial__entire-link"
   .col-6.p-3
     - if review.avatar.attached?
       = image_tag review.avatar.variant(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid img-thumbnail" 
