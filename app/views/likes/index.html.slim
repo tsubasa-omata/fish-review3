@@ -1,0 +1,6 @@
+- if @likes.any?
+  .row
+    - @likes.each do |like|
+        .review-partial.col-12.col-md-6.col-lg-4.p-3
+          .review-partial__box.shadow
+            == render "shared/index_review" , review: like.review
