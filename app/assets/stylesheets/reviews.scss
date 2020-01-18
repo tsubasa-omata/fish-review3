@@ -138,6 +138,13 @@
   font-size: 8px;
   position: relative;
   z-index: 3;
+  a{
+    color: black;
+    text-decoration: underline;
+    &:hover{
+      color:gray;
+    }
+  }
   @media (min-width: 576px) {
      font-size: 12px;
   }
@@ -153,15 +160,16 @@
 }
 
 .review-partial__user-account_name{
-  a{
-  color: #C0C0C0;
-  }
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 8px;
   position: relative;
   z-index: 3;
+  a{
+    color: #C0C0C0;
+    text-decoration: underline;
+  }
   @media (min-width: 576px) {
      font-size: 12px;
   }

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   
   root 'static_pages#home'
   resources :users
-  resources :likes, only: [:index]
+  #resources :likes, only: [:index]
+  get 'likes/index' => 'likes#index'
   resources :reviews do
     resources :likes, only: [:create, :destroy]
   end

@@ -13,13 +13,15 @@ header
           li.nav-item.ml-1.ml-xl-3
             = link_to "タイムライン",   '/' ,class: "nav-link"
           li.nav-item.ml-1.ml-xl-3
+            = link_to "全ての投稿",   '/reviews' ,class: "nav-link"
+          li.nav-item.ml-1.ml-xl-3
             = link_to "投稿する",   new_review_path ,class: "nav-link"
           li.nav-item.ml-1.ml-xl-3
             = link_to "魚種一覧",   '/fishes' ,class: "nav-link"
           li.nav-item.ml-1.ml-xl-3
             = link_to "ユーザー一覧", users_path ,class: "nav-link"
           li.nav-item.ml-1.ml-xl-3
-            = link_to "全ての投稿",   '/reviews' ,class: "nav-link"
+            = link_to "いいね一覧",  '/likes/index' ,class: "nav-link"
           /li.nav-item.ml-1.ml-xl-3
           /  = link_to "いいね一覧",   '#' ,class: "nav-link"
           /li.nav-item.dropdown.ml-1.ml-xl-3

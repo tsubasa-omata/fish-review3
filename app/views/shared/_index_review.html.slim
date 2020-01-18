@@ -17,7 +17,7 @@
           = image_tag "noimage.png" ,class: "d-inline-block img-fluid user_image" 
       .review-partial__user-name-wrap
         p.text-dark.review-partial__user-name.text-truncate
-          = link_to review.user.name , user_path(review.user) , class: "pl-2 text-dark"
+          = link_to review.user.name , user_path(review.user) , class: "pl-2"
         p.text-dark.review-partial__user-account_name.text-truncate
           = link_to review.user.name , user_path(review.user) , class: "pl-2"
     p 
