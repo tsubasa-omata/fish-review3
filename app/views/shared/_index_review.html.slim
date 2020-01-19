@@ -59,9 +59,8 @@
     span.review-partial__review-item
       = review.recipe 
 
-    .review-partial__review-item-taste
-      p.px-2.pt-1.pb-5
-        = review.taste_imp
+    .review-partial__review-item-taste.px-2.pt-1.pb-4
+      = simple_format(review.taste_imp)
 
 .review-partial__time
   = time_ago_in_words(review.created_at) 

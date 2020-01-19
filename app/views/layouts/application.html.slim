@@ -11,11 +11,18 @@ html
     /= render 'layout/shim' ブラウザ対応
   body
     == render 'layouts/header'
-    .container-fluid
-      - flash.each do |message_type, message| 
-        div class="alert" class="alert-#{message_type}"
-          = message 
-      == yield
+    -if request.path == 'static_pagaes/about'
+      .application__all
+        - flash.each do |message_type, message| 
+          div class="alert" class="alert-#{message_type}"
+            = message 
+        == yield
+    -else
+      .container-fluid.application__all
+        - flash.each do |message_type, message| 
+          div class="alert" class="alert-#{message_type}"
+            = message 
+        == yield
       == render 'layouts/footer'
     /= debug(params) if Rails.env.development?
     

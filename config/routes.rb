@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   
   root 'static_pages#home'
+  get 'static_pages/about' => 'static_pages#about'
   resources :users
   #resources :likes, only: [:index]
   get 'likes/index' => 'likes#index'
