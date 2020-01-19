@@ -8,9 +8,12 @@
         .form-group
           = f.label :name, 'アカウント名' 
           = f.text_field :name, class: 'form-control' 
-        .form-group
-          = f.label :account_name, 'アカウントID'
-          = f.text_field :account_name, class: 'form-control' 
+        .form-group  
+        = f.label :account_name, 'アカウントID'
+        .input-group
+          .input-group-prepend
+            .input-group-text @
+          = f.text_field :account_name, class: 'form-control' , placeholder: "9文字まで" 
         .form-group
           = f.label :email , 'メールアドレス'
           = f.email_field :email, class: 'form-control' 

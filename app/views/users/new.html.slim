@@ -18,7 +18,7 @@ h1.mt-5.mb-3.text-center.font-weight-bold 新規登録
         = f.email_field :email, class: 'form-control' 
       .form-group  
         = f.label :prof , 'プロフィール'
-        = f.text_area :prof, class: 'form-control' , placeholder: "100文字まで" 
+        = f.text_area :prof, class: 'form-control' , placeholder: "100文字まで(改行不可)" 
       .form-group  
         = f.label :avatar , 'プロフィール写真'
         = f.file_field :avatar, class: 'form-control-file'
