@@ -11,19 +11,21 @@ html
     /= render 'layout/shim' ブラウザ対応
   body
     == render 'layouts/header'
-    -if request.path == 'static_pagaes/about'
+    /-if request.path == 'static_pages/about'
+    -if current_page?(static_pages_about_path)
       .application__all
         - flash.each do |message_type, message| 
           div class="alert" class="alert-#{message_type}"
             = message 
         == yield
+        == render 'layouts/footer'
     -else
-      .container-fluid.application__all
+      .container-fluid
         - flash.each do |message_type, message| 
           div class="alert" class="alert-#{message_type}"
             = message 
         == yield
-      == render 'layouts/footer'
+        == render 'layouts/footer'
     /= debug(params) if Rails.env.development?
     
     script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"
