@@ -18,7 +18,7 @@
             - if user.avatar.attached?
               = image_tag user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid user_image" 
             -else
-              = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid user_image" 
+              = image_tag "/user_noimage.png" ,class: "mx-auto d-block img-fluid user_image" 
           .col-sm-2.col-8.nameinfo
             p.show_follow__user-name
               = link_to user.name , user_path(user) , class: "text-dark"
