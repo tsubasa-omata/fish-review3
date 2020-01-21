@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: 名前
+        account_name: アカウント名
+        email: メールアドレス
+        password_digest: パスワード
+        password: パスワード
+        prof: プロフィール
+        picture: 写真
+        created_at: 登録日時
+        updated_at: 更新日時
+      review:
+        taste_level: 食味評価
+        taste_imp: 食味感想
+        season: 時期
+        place: 獲れた場所
+        place_detail: 場所（詳細）
+        recipe: 調理方法
+        preservation_period: 熟成期間
+        fish_size: サイズ
+        blood: 血抜き
+        picture: 写真
+        created_at: 登録日時
+        updated_at: 更新日時
+      comment:
+        content: コメント
+        created_at: 登録日時
+        updated_at: 更新日時
