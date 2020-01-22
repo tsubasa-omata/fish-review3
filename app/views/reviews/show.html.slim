@@ -2,7 +2,7 @@
 .row.justify-content-center.pt-5
   .review-partial.col-12.col-md-8.col-lg-7.p-3
     .review-partial__box.shadow
-      == render "shared/index_review" , object: @review
+      == render "shared/index_review" , review: @review
       /.review-partial-show__time
         = time_ago_in_words(@review.created_at) 
         |前

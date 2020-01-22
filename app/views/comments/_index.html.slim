@@ -14,7 +14,7 @@
             .comment-partial__user-account-name.d-inline-block 
               = link_to comment.user.account_name, user_path(comment.user.id) 
             .comment-partial__content.mt-2
-              = comment.content 
+              = simple_format(comment.content) 
             
         .comment-partial__sub-wrap.text-right
           .comment-partial__time.d-inline-block

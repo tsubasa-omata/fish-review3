@@ -2,13 +2,17 @@ Rails.application.routes.draw do
 
   
   root 'static_pages#home'
+  get 'static_pages/about' => 'static_pages#about'
   resources :users
-  resources :reviews
+  #resources :likes, only: [:index]
+  get 'likes/index' => 'likes#index'
+  resources :reviews do
+    resources :likes, only: [:create, :destroy]
+  end
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :relationships, only: [:create, :destroy]
   resources :fishes, only: [:index, :show]
-  resources :likes, only: [:create, :destroy]
   resources :reviews do
     resources :comments, only: [:create, :destroy]
   end

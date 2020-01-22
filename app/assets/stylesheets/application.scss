@@ -59,6 +59,8 @@
   padding-bottom: 80px;
  }
 
+
+
 header{
   background-color: #222222; 
  }
@@ -167,6 +169,24 @@ span.header__sub-title {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
+a.like-icon {
+  text-decoration: none;
+}
+
+a.is-like {
+  color: red;
+  &:hover {
+    color: red;
+  }
+}
+
+a.is-not-like {
+  color: gray;
+  &:hover {
+    color: gray;
+  }
+}
+
 footer{
   position: absolute;
   bottom: 0;
@@ -206,4 +226,8 @@ footer{
   @media (min-width: 1360px) {
     width: 1332px;
   }
+}
+
+.error_message{
+  padding-top: 0.3rem;
 }

@@ -8,9 +8,12 @@
         .form-group
           = f.label :name, 'アカウント名' 
           = f.text_field :name, class: 'form-control' 
-        .form-group
-          = f.label :account_name, 'アカウントID'
-          = f.text_field :account_name, class: 'form-control' 
+        .form-group  
+        = f.label :account_name, 'アカウントID'
+        .input-group
+          .input-group-prepend
+            .input-group-text @
+          = f.text_field :account_name, class: 'form-control' , placeholder: "9文字まで" 
         .form-group
           = f.label :email , 'メールアドレス'
           = f.email_field :email, class: 'form-control' 
@@ -22,9 +25,9 @@
           = f.file_field :picture, class: 'form-control'
         .form-group
           = f.label :password , 'パスワード'
-          = f.password_field :password, class: 'form-control' 
+          = f.password_field :password, class: 'form-control' , placeholder: "6〜10文字以内"
         .form-group
           = f.label :password_confirmation, "パスワード（確認）" 
-          = f.password_field :password_confirmation, class: 'form-control' 
+          = f.password_field :password_confirmation, class: 'form-control' , placeholder: "6〜10文字以内"
           .mt-3.text-center
             = f.submit "アカウント情報を編集", class: "btn btn-primary" 

@@ -1,0 +1,11 @@
+- provide :title, "いいね一覧 "
+h1.mt-5.mb-5.text-center.font-weight-bold いいね一覧
+- if @likes.any?
+  .row
+    - @likes.each do |like|
+        .review-partial.col-12.col-md-6.col-lg-4.p-3
+          .review-partial__box.shadow
+            == render "shared/index_review" , review: like.review
+- else
+  p.text-center.like-show__review-nil
+          | いいねした投稿はまだありません

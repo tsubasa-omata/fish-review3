@@ -64,9 +64,11 @@
 }
 
 .review-partial__fish-name {
+  text-decoration: underline;
   font-size: 10px;
   position: relative; 
   z-index: 3;
+  
   @media (min-width: 576px) {
     font-size: 14px;
   }
@@ -80,7 +82,12 @@
     font-size: 18px;
   }
 }
-
+.review-partial__fish-name-color{
+  color: black;
+  &:hover{
+    color:gray;
+  }
+}
 .review-partial__time{
   position: absolute;
   bottom: 0.5rem;
@@ -93,6 +100,7 @@
   bottom: 0.5rem;
   left: 0.5rem;
   color: #C0C0C0;
+  z-index: 100;
 }
 
 .review-partial__review-item{
@@ -130,6 +138,13 @@
   font-size: 8px;
   position: relative;
   z-index: 3;
+  a{
+    color: black;
+    text-decoration: underline;
+    &:hover{
+      color:gray;
+    }
+  }
   @media (min-width: 576px) {
      font-size: 12px;
   }
@@ -145,15 +160,16 @@
 }
 
 .review-partial__user-account_name{
-  a{
-  color: #C0C0C0;
-  }
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 8px;
   position: relative;
   z-index: 3;
+  a{
+    color: #C0C0C0;
+    text-decoration: underline;
+  }
   @media (min-width: 576px) {
      font-size: 12px;
   }

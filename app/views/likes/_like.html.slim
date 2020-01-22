@@ -1,0 +1,9 @@
+div id="js-like-action-#{review.id}"
+  - if current_user.present?
+		- like = current_user.likes.find_by(review: review)
+		- if like.present?
+			= link_to review_like_path(review, like), method: :delete, remote: true, class: 'like-icon is-like'
+				= fa_icon("heart", text: review.likes.count)
+		- else
+			= link_to review_likes_path(review), method: :post, remote: true, class: 'like-icon is-not-like'
+				= fa_icon("heart", text: review.likes.count)

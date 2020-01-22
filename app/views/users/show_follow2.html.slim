@@ -1,24 +1,24 @@
 .show_follow
   h1.text-center.mt-5.mb-5 =@title
   - if @users.present?
-    - @users.each do |user| 
-      .container
+    .container.user__index-container
+      - @users.each do |user| 
         .row.border.rounded-lg.follow_user.mb-4.shadow
           .col-sm-2.col-4
             - if user.avatar.attached?
               = image_tag user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid user_image" 
             -else
-              = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid user_image" 
+              = image_tag "/user_noimage.png" ,class: "mx-auto d-block img-fluid user_image" 
           .col-sm-2.col-8.nameinfo
             p.show_follow__user-name
               = link_to user.name , user_path(user) , class: "text-dark"
             p.show_follow__user-account-name
               = link_to user.account_name , user_path(user)
-          .col-sm-6.col-12.text-left.overflow-auto.border
+          .col-sm-6.col-12.text-left.overflow-auto.user__index-prof
             p.prof
               = user.prof
           - unless current_user == user
-            .col-sm-2.col-3.text-center id="follow_form_#{user.id}"
+            .col-sm-2.col-12.text-center id="follow_form_#{user.id}"
               - if current_user.following?(user) 
                 = form_with(model: current_user.active_relationships.find_by(followed_id: user.id),html: { method: :delete }) do |f| 
                   = f.submit "Unfollow", class: "btn btn-primary" 

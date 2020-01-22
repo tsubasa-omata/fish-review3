@@ -12,22 +12,22 @@ h1.mt-5.mb-3.text-center.font-weight-bold 新規登録
         .input-group
           .input-group-prepend
             .input-group-text @
-          = f.text_field :account_name, class: 'form-control' , placeholder: "10文字まで" 
+          = f.text_field :account_name, class: 'form-control' , placeholder: "9文字まで" 
       .form-group  
         = f.label :email , 'メールアドレス'
         = f.email_field :email, class: 'form-control' 
       .form-group  
         = f.label :prof , 'プロフィール'
-        = f.text_area :prof, class: 'form-control' , placeholder: "100文字まで" 
+        = f.text_area :prof, class: 'form-control' , placeholder: "100文字まで(改行不可)" 
       .form-group  
         = f.label :avatar , 'プロフィール写真'
         = f.file_field :avatar, class: 'form-control-file'
       .form-group  
         = f.label :password , 'パスワード'
-        = f.password_field :password, class: 'form-control', placeholder: "6文字まで"
+        = f.password_field :password, class: 'form-control', placeholder: "6〜10文字以内"
       .form-group
         = f.label :password_confirmation, "パスワード（確認）" 
-        = f.password_field :password_confirmation, class: 'form-control', placeholder: "6文字まで"
+        = f.password_field :password_confirmation, class: 'form-control', placeholder: "6〜10文字以内"
       .text-center
         = f.submit 'アカウントを作成', class: "btn btn-primary" 
 

@@ -38,7 +38,7 @@ RSpec.describe Review, type: :model do
   context " recipeについて " do
     it " 空欄の場合有効か " do
       review.recipe = " "
-      expect(review).to be_valid
+      expect(review).to be_invalid
     end
     it " 11文字以上の場合無効か " do
       review.recipe = "a" * 11

@@ -13,6 +13,7 @@ class Review < ApplicationRecord
     validates :fish_size
     validates :user_id
     validates :fish_id
+    validates :recipe
   end
 
   validates :taste_level,  numericality: { :less_than_or_equal_to => 5, :greater_than_or_equal_to => 1}
