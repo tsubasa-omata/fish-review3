@@ -1,35 +1,33 @@
-# README
+## サービス概要
 
-##サービス概要
-###サービス名　
+- サービス名  
 Fish-Review
-###概要
+- 概要  
 ユーザーが魚の食味を投稿できるサービス。魚の味は季節や取れた場所などよって味が大きく異なる。ユーザーの投稿によって場所や季節ごとに魚の味が比較できるようにする。主に魚釣りをする人や料理人などがターゲット。
 
-##サービスURL
+## サービスURL  
 https://fish-review3.herokuapp.com
 
-##技術スタック
-
-
-
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 技術スタック  
+ - Ruby 2.6.3
+ - Rails5.2.4
+   - Slim　（HTMLテンプレートエンジン使用）
+   - Rspec
+ - MySQL  
+ - heroku
+   - S3 (画像データの保存)
+## 機能一覧
+- 管理者権限
+- ユーザー登録
+- ログイン・ログアウト
+- ログイン状態維持
+- プロフィール編集
+- レビュー投稿・編集・削除
+- 画像アップロード機能・削除
+- ページネーション
+- ユーザー検索
+- レビュー検索
+- 魚種検索
+- コメント機能
+- いいね機能
+- フォロー機能
