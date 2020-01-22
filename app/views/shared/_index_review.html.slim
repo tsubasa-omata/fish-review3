@@ -5,7 +5,7 @@
   = link_to "" , review_path(review) , class: "review-partial__entire-link"
   .col-6.p-3
     - if review.avatar.attached?
-      = image_tag review.avatar.variant(combine_options:{resize:"200x200^",crop:"200x200+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid img-thumbnail" 
+      = image_tag review.avatar.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid img-thumbnail" 
     - else
       = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid img-thumbnail" 
   .col-6.p-3.review-index__review
