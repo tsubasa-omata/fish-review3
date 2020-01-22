@@ -92,8 +92,6 @@ class User < ApplicationRecord
     update_attribute(:reset_digest, User.digest(reset_token))
   end
 
-  
-
   def forget
     update_attribute(:remember_digest, nil)
   end
