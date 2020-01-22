@@ -82,7 +82,7 @@
             = f.text_field :place_detail, class: 'form-control' , placeholder: "10文字まで"
           .form-group
             = f.label :preservation_period, "熟成期間（日）" 
-            = f.select :preservation_period, [1,2,3,4,5,6,7,8,9,10,11,12,13,14], class: 'form-control' 
+            = f.select :preservation_period, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14], class: 'form-control' 
           .form-group
             = f.label :blood , '血抜き有'
             = f.check_box :blood ,class: 'form-control' 

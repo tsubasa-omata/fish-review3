@@ -156,3 +156,45 @@
     color: #C0C0C0;
     }
 }
+
+.user__index-container{
+
+  @media (max-width: 576px) {
+    width: 90% !important;
+  }
+  @media (min-width: 576px) {
+    width: 489px !important;
+  }
+
+  @media (min-width: 672px){
+    width: 571px !important;
+  }
+
+  @media (min-width: 768px) {
+    width: 652px !important;
+  }
+
+  @media (min-width: 880px){
+    width: 704px !important;
+  }
+
+  @media (min-width: 992px) {
+    width: 793px !important;
+  }
+
+  @media (min-width: 1096px) {
+    width: 822px !important;
+  }
+
+  @media (min-width: 1200px) {
+    width: 900px !important;
+  }
+
+  @media (min-width: 1360px) {
+    width: 1030px !important;
+  }
+}
+
+.user__index-prof{
+  background-color: rgb(241, 238, 238);
+}
