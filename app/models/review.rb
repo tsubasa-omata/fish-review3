@@ -11,15 +11,12 @@ class Review < ApplicationRecord
     validates :season
     validates :place
     validates :fish_size
-    validates :user_id
-    validates :fish_id
     validates :recipe
   end
 
-  validates :taste_level,  numericality: { :less_than_or_equal_to => 5, :greater_than_or_equal_to => 1}
+  validates :taste_level,  numericality: { less_than_or_equal_to: 5, greater_than_or_equal_to: 1}
   validates :taste_imp,    length:       { maximum: 200 }
   validates :place_detail, length:       { maximum: 10 }
   validates :recipe,       length:       { maximum: 10 }
-  validates :season,       numericality: { :less_than_or_equal_to => 12, :greater_than_or_equal_to => 1}
-
+  validates :season,       numericality: { less_than_or_equal_to: 12, greater_than_or_equal_to: 1}
 end
