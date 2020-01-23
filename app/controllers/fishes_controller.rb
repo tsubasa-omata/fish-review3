@@ -12,9 +12,9 @@ class FishesController < ApplicationController
 
   
 
-  private
-  def search_params
-    params.require(:q).permit(:name)
-  end
+private
+    def search_params
+      params.require(:q).permit(:name)
+    end
 
 end

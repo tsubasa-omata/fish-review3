@@ -23,12 +23,12 @@ class LikesController < ApplicationController
     end
   end
 
-  private
-  def set_review
-    @review = Review.find(params[:review_id])
-  end
+private
+    def set_review
+      @review = Review.find(params[:review_id])
+    end
 
-  def set_like
-    @like = @review.likes.find(params[:id])
-  end
+    def set_like
+      @like = @review.likes.find(params[:id])
+    end
 end

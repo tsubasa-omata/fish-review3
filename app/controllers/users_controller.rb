@@ -2,13 +2,14 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index,:edit, :update,:destroy,:following,:followers]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
+  before_action :set_user,      only: [:show, :edit, :update, :following, :followers ]
+  :set_review, only: %i[create destroy]
   def index
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page]).per(10)
   end
   
   def show
-    @user = User.find_by(id: params[:id])
     @reviews = @user.reviews.order(:created_at).page(params[:page]).per(5)
   end
 
@@ -34,11 +35,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.account_name == "@guest"
       redirect_to @user
     else
@@ -53,19 +52,20 @@ class UsersController < ApplicationController
 
   def following
     @title = "フォロ一 "
-    @user  = User.find(params[:id])
     @users = @user.following.page(params[:page]).per(10)
     render 'show_follow2'
   end
 
   def followers
     @title = "フォロワー "
-    @user  = User.find(params[:id])
     @users = @user.followers.page(params[:page]).per(10)
     render 'show_follow2'
   end
 
 private
+    def set_user
+      @user = User.find(params[:id])
+    end
 
     def user_params
         params.require(:user).permit(

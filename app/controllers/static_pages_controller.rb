@@ -1,7 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
     if logged_in?
-      #@micropost  = current_user.microposts.build
       @reviews = current_user.feed
     else
       @q = Review.ransack(params[:q])
@@ -9,8 +8,7 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def about
-    
+  def about 
   end
 
 end
