@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   before_action :set_user,      only: [:show, :edit, :update, :following, :followers ]
-  :set_review, only: %i[create destroy]
   def index
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page]).per(10)
