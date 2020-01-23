@@ -1,81 +1,94 @@
-version: 2 # use CircleCI 2.0
-jobs: # a collection of steps
-  build: # runs not using Workflows must have a `build` job as entry point
-    parallelism: 3 # run three instances of this job in parallel
-    docker: # run the steps with Docker
-      - image: circleci/ruby:2.6.3-jessie-node # ...with this image as the primary container; this is where all `steps` will run
-        environment: # environment variables for primary container
-          BUNDLE_JOBS: 3
-          BUNDLE_RETRY: 3
+version: 2
+jobs:
+  build:
+    parameters:
+      assets_precompile:
+        description: "Whether or not do assets:precompile"
+        type: boolean
+        default: false
+    docker:
+      - image: circleci/ruby:2.6.3-node # バージョンについては適宜変更
+        environment:
           BUNDLE_PATH: vendor/bundle
-          PGHOST: 127.0.0.1
-          PGUSER: circleci-demo-ruby
-          RAILS_ENV: test
-      - image: circleci/mysql:5.7 # database image
-        environment: # environment variables for database
-
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_ROOT_PASSWORD: ''
-          MYSQL_DATABASE: fish-review3
-    steps: # a collection of executable commands
-      - checkout # special step to check out source code to working directory
-
-      # Which version of bundler?
-      - run:
-          name: Which bundler?
-          command: bundle -v
-
-      # Restore bundle cache
-      # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+          BUNDLER_VERSION: 2.0.1
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_DATABASE: base_project_test
+    steps:
+      - run: gem install bundler -v $BUNDLER_VERSION
+      - checkout
       - restore_cache:
           keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
-
-      - run: # Install Ruby dependencies
-          name: Bundle Install
-          command: bundle check --path vendor/bundle || bundle install --deployment
-
-      # Store bundle cache for Ruby dependencies
+            - bundle-v2-{{ checksum "Gemfile.lock" }}
+            - yarn-v1-{{ checksum "yarn.lock" }}
+      - run: bin/bundle check || bin/bundle install --deployment
+      - run:
+          name: install yarn dependencies
+          command: bundle exec yarn install
       - save_cache:
-          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          key: bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-
-      # Only necessary if app uses webpacker or yarn in some other way
-      - restore_cache:
-          keys:
-            - rails-demo-yarn-{{ checksum "yarn.lock" }}
-            - rails-demo-yarn-
-
-      - run:
-          name: Yarn Install
-          command: yarn install --cache-folder ~/.cache/yarn
-
-      # Store yarn / webpacker cache
       - save_cache:
-          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+          key: yarn-v1-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn
-
+            - node_modules
       - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
+          command: bin/rake db:create db:migrate
+          environment:
+            RAILS_ENV: test
+ 
+      - run: bin/bundle exec rubocop
+      - run: bin/bundle exec rails_best_practices
+      - run: bundle exec brakeman -5 -A -w 1 -e -z
       - run:
-          name: Database setup
-          command: bin/rails db:schema:load --trace
-
-      - run:
-          name: Run rspec in parallel
+          name: run tests
           command: |
-            bundle exec rspec --profile 10 \
-                              --format RspecJunitFormatter \
-                              --out test_results/rspec.xml \
-                              --format progress \
-                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-
-      # Save test results for timing analysis
-      - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: test_results
-      # See https://circleci.com/docs/2.0/deployment-integrations/ for example deploy configs
+            bundle exec rspec --format progress \
+                            --format RspecJunitFormatter \
+                            --format progress
+      - store_artifacts:
+          path: coverage
+ 
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+ 
+  deploy:
+    docker:
+      - image: circleci/ruby:2.6.3-node&nbsp;# バージョンについては適宜変更
+    working_directory: /tmp/repo
+    steps:
+      - checkout
+      - run:
+          name: 'Install Heroku CLI, if necessary'
+          command: |
+            if [[ $(command -v heroku) == "" ]]; then
+              curl https://cli-assets.heroku.com/install.sh | sh
+            else
+              echo "Heroku is already installed. No operation was performed."
+            fi
+      - run:
+          name: heroku maintenance on
+          command: heroku maintenance:on --app ${HEROKU_APP_NAME}
+      - run:
+          name: Deploy to Heroku_Production
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+      - run:
+          name: heroku maintenance off
+          command: heroku maintenance:off --app ${HEROKU_APP_NAME}
+ 
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build # デプロイ前に必ずテストを行う
+          filters:
+            branches:
+              only:
+                - master # masterブランチが変更された場合のみデプロイを実行
