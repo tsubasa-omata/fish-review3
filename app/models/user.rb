@@ -30,12 +30,17 @@ class User < ApplicationRecord
 
 
   before_save :downcase_email
+  before_save :change_account_name
   before_create :create_activation_digest
   #mount_uploader :picture, ImageUploader
   has_secure_password
 
   def downcase_email
     self.email = email.downcase
+  end
+
+  def change_account_name
+    self.account_name = "@" + account_name
   end
 
   def downcase_account_name
