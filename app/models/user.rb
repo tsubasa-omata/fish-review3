@@ -28,7 +28,6 @@ class User < ApplicationRecord
                        length: { in: 6..10 },
                        allow_nil: true     #has_resure_passwordがあるから新規登録時空になることはない
 
-
   before_save :downcase_email
   before_create :create_activation_digest
   #mount_uploader :picture, ImageUploader
@@ -43,11 +42,11 @@ class User < ApplicationRecord
   end
 
   def follow(other_user)
-    active_relationships.create(followed_id: other_user.id)
+    active_relationships.create(followed: other_user)
   end
 
   def unfollow(other_user)
-    active_relationships.find_by(followed_id: other_user.id).destroy
+    active_relationships.find_by(followed: other_user).destroy
   end
 
   def following?(other_user)
@@ -92,8 +91,6 @@ class User < ApplicationRecord
     update_attribute(:reset_digest, User.digest(reset_token))
   end
 
-  
-
   def forget
     update_attribute(:remember_digest, nil)
   end
@@ -109,5 +106,4 @@ class User < ApplicationRecord
   def send_password_reset_email
     UserMailer.password_reset(self).deliver_now      #password_reset(self)これはuser_mailerで定義している
   end
-  
 end

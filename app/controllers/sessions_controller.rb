@@ -10,8 +10,7 @@ class SessionsController < ApplicationController
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         redirect_back_or root_url
       else
-        message  = "アカウントが有効ではありません "
-        message += "メールをご確認ください"
+        message = "アカウントが有効ではありません メールをご確認ください"
         flash[:warning] = message
         redirect_to root_url
       end
@@ -25,5 +24,4 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_url
   end
-
 end

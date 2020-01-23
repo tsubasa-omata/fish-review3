@@ -10,9 +10,9 @@
               = image_tag "noimage.png" ,class: "d-inline-block img-fluid user_image" 
           .comment-partial__content-wrap
             .comment-partial__user_name.d-inline-block 
-              = link_to comment.user.name, user_path(comment.user.id) 
+              = link_to comment.user.name, user_path(comment.user)
             .comment-partial__user-account-name.d-inline-block 
-              = link_to comment.user.account_name, user_path(comment.user.id) 
+              = link_to comment.user.account_name, user_path(comment.user)
             .comment-partial__content.mt-2
               = simple_format(comment.content) 
             
@@ -22,7 +22,7 @@
             |前
           - if comment.user == current_user 
             p.d-inline-block.ml-2
-              = link_to '削除', review_comment_path(comment.review_id, comment.id), method: :delete,  data: { confirm: "この投稿を削除しますか?" }, remote: true
+              = link_to '削除', review_comment_path(comment.review, comment), method: :delete,  data: { confirm: "この投稿を削除しますか?" }, remote: true
 - else 
   .comment-partial__no-comment.text-center.mt-4
     p コメントはまだありません
