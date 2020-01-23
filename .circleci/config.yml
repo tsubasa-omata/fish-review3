@@ -40,7 +40,7 @@ jobs:
  
       #- run: bin/bundle exec rubocop
       #- run: bin/bundle exec rails_best_practices
-      - run: bundle exec brakeman -5 -A -w 1 -e -z
+      #- run: bundle exec brakeman -5 -A -w 1 -e -z
       - run:
           name: run tests
           command: |
