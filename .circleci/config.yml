@@ -7,7 +7,7 @@ jobs:
         type: boolean
         default: false
     docker:
-      - image: circleci/ruby:2.6.3-node # バージョンについては適宜変更
+      - image: circleci/ruby:2.6.3-node-browsers # バージョンについては適宜変更
         environment:
           BUNDLE_PATH: vendor/bundle
           BUNDLER_VERSION: 2.0.1
