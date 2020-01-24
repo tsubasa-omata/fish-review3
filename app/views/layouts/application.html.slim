@@ -15,14 +15,14 @@ html
     -if current_page?(static_pages_about_path)
       .application__all
         - flash.each do |message_type, message| 
-          div class="alert" class="alert-#{message_type}"
+          div class="alert" class="alert-#{message_type}" class="mt-2"
             = message 
         == yield
         == render 'layouts/footer'
     -else
       .container-fluid
         - flash.each do |message_type, message| 
-          div class="alert" class="alert-#{message_type}"
+          div class="alert mt-3" class="alert-#{message_type}"
             = message 
         == yield
         == render 'layouts/footer'
