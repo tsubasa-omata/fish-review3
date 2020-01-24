@@ -28,4 +28,7 @@ module UsersHelper
   #  end
   end
 
+  def guest_user?
+    current_user.account_name == "@guest"
+  end
 end

@@ -18,7 +18,8 @@
           .user__prof-prof.mb-4.mt-1
             = current_user.prof
           .user__prof-edit
-            = link_to "編集" , edit_user_path(current_user)
+            - unless guest_user?
+              = link_to "編集" , edit_user_path(current_user)
 - else 
   = search_form_for(@q, url:root_path) do |f|
     .review__index-search.d-sm-flex.justify-content-around.mx-sm-3.mb-5.border-bottom.px-4.py-4.bg-gray
