@@ -49,21 +49,21 @@ p.about__exp-title.text-center.mt-2
     .col-12.col-md-6
       = image_tag "/fish_photo2.JPG", class: 'img-fluid about__exp-img'
 
-
   .row.about__row.justify-content-lg-center.pt-5.pb-5
-    .col-12.col-sm-6.col-lg-4.mb-2.about-col-bottom
-      p.text-center.about__bottom-button 新規登録の方
-      p.text-center.pt-3
-        = link_to  new_user_path  do
-          button.btn.btn-default.border
-            = fa_icon ("user 1.5x") 
-            span.pl-2 アカウント作成
-    .col-12.col-sm-6.col-lg-4.mb-2.about-col-bottom
-      p.text-center.about__bottom-button アカウントをお持ちの方
-      p.text-center.pt-3
-        = link_to  login_path  do
-          button.btn.btn-default.border
-            = fa_icon ("sign-in 1.5x") 
-            span.pl-2 ログイン
+    - unless logged_in?
+      .col-12.col-sm-6.col-lg-4.mb-2.about-col-bottom
+        p.text-center.about__bottom-button 新規登録の方
+        p.text-center.pt-3
+          = link_to  new_user_path  do
+            button.btn.btn-default.border
+              = fa_icon ("user 1.5x") 
+              span.pl-2 アカウント作成
+      .col-12.col-sm-6.col-lg-4.mb-2.about-col-bottom
+        p.text-center.about__bottom-button アカウントをお持ちの方
+        p.text-center.pt-3
+          = link_to  login_path  do
+            button.btn.btn-default.border
+              = fa_icon ("sign-in 1.5x") 
+              span.pl-2 ログイン
 
 
