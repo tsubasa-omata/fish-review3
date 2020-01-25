@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index,:edit, :update,:destroy,:following,:followers]
-  before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
-  before_action :set_user,      only: [:show, :edit, :update, :following, :followers ]
+  before_action :logged_in_user,      only: [:index,:edit, :update,:destroy,:following,:followers]
+  before_action :correct_user,        only: [:edit, :update]
+  before_action :admin_user,          only: :destroy
+  before_action :set_user,            only: [:show, :edit, :update, :following, :followers ]
   def index
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page]).per(10)
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.account_name = "@" + @user.account_name
     if @user.save                                       #ここでbefore_actionのcreate_activation_digestが実行される。
       @user.send_activation_email                      #このsend_activation_emailメソッドの中のaccount_activationはuser_mailerのメソッド？それともuser_mailer_previewのメソッド？
       flash[:info] = "メールを確認してアカウントを有効化して下さい"
@@ -34,6 +35,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @account_name = @user.account_name
+    @account_name.slice!(0) 
+    @account_name
   end
 
   def update
