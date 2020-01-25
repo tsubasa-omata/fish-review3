@@ -29,7 +29,7 @@ class User < ApplicationRecord
                        allow_nil: true     #has_resure_passwordがあるから新規登録時空になることはない
 
   before_save :downcase_email
-  before_update :change_account_name
+  #before_update :change_account_name
   before_create :create_activation_digest
   #mount_uploader :picture, ImageUploader
   has_secure_password
@@ -42,9 +42,9 @@ class User < ApplicationRecord
     self.account_name = account_name.downcase
   end
 
-  def change_account_name
-    self.account_name = "@" + account_name
-  end
+  #def change_account_name
+  #  self.account_name = "@" + account_name
+  #end
 
   def follow(other_user)
     active_relationships.create(followed: other_user)

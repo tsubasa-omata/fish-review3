@@ -45,6 +45,8 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       if @user.update_attributes(user_params)
+         @user.account_name = "@" + @user.account_name
+         @user.save
         flash[:success] = "プロフィールを編集しました"
         redirect_to @user
       else
