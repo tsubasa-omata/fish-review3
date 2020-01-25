@@ -17,9 +17,10 @@
         .col-12.col-sm-6.user__prof-prof-wrap.px-2
           .user__prof-prof.mb-4.mt-1
             = @user.prof
-        - if review_correct_user
-          .user__prof-edit
-            = link_to "編集" , edit_user_path(current_user)
+          - if review_correct_user
+            - unless guest_user?
+              .user__prof-edit
+                = link_to "編集" , edit_user_path(current_user)
 
 - if @reviews.any?
     .row
