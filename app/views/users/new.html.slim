@@ -4,30 +4,34 @@ h1.mt-5.mb-3.text-center.font-weight-bold 新規登録
   .col-md-6.offset-md-3
     = form_with model: @user, local: true do |f|
       == render "shared/error_messages" , object: f.object
-      .form-group  
-        = f.label :name, 'アカウント名' 
-        = f.text_field :name, class: 'form-control' , placeholder: "10文字まで" 
-      .form-group  
-        = f.label :account_name, 'アカウントID'
-        .input-group
-          .input-group-prepend
-            .input-group-text @
-          = f.text_field :account_name, class: 'form-control' , placeholder: "9文字まで" 
-      .form-group  
-        = f.label :email , 'メールアドレス'
-        = f.email_field :email, class: 'form-control' 
-      .form-group  
-        = f.label :prof , 'プロフィール'
-        = f.text_area :prof, class: 'form-control' , placeholder: "100文字まで(改行不可)" 
-      .form-group  
-        = f.label :avatar , 'プロフィール写真'
-        = f.file_field :avatar, class: 'form-control-file'
-      .form-group  
-        = f.label :password , 'パスワード'
-        = f.password_field :password, class: 'form-control', placeholder: "6〜10文字以内"
-      .form-group
-        = f.label :password_confirmation, "パスワード（確認）" 
-        = f.password_field :password_confirmation, class: 'form-control', placeholder: "6〜10文字以内"
+      .jumbotron.users-new__need.p-3
+        p.mb-5.users-new__need-word.d-inline-block  必須 
+        .form-group  
+          = f.label :name, 'アカウント名' 
+          = f.text_field :name, class: 'form-control' , placeholder: "10文字まで" 
+        .form-group  
+          = f.label :account_name, 'アカウントID'
+          .input-group
+            .input-group-prepend
+              .input-group-text @
+            = f.text_field :account_name, class: 'form-control' , placeholder: "9文字まで" 
+        .form-group  
+          = f.label :email , 'メールアドレス'
+          = f.email_field :email, class: 'form-control' 
+        .form-group  
+          = f.label :password , 'パスワード'
+          = f.password_field :password, class: 'form-control', placeholder: "6〜10文字以内"
+        .form-group
+          = f.label :password_confirmation, "パスワード（確認）" 
+          = f.password_field :password_confirmation, class: 'form-control', placeholder: "6〜10文字以内"
+      .jumbotron.users-new__optional.p-3
+        p.mb-5.users-new__optional-word.d-inline-block  任意
+        .form-group  
+          = f.label :prof , 'プロフィール'
+          = f.text_area :prof, class: 'form-control' , placeholder: "100文字まで(改行不可)" 
+        .form-group  
+          = f.label :avatar , 'プロフィール写真'
+          = f.file_field :avatar, class: 'form-control-file'
       .text-center
         = f.submit 'アカウントを作成', class: "btn btn-primary" 
 

@@ -198,3 +198,27 @@
 .user__index-prof{
   background-color: rgb(241, 238, 238);
 }
+
+.users-new__need-word{
+  color: white;
+  background-color:#FF6666;
+  border-radius: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.users-new__optional-word{
+  color: white;
+  background-color:#0099FF;
+  border-radius: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.users-new__need{
+  background-color: #FFF0F5 !important;
+}
+
+.users-new__optional{
+  background-color: #F0FFFF !important;
+}
