@@ -19,7 +19,7 @@
             = f.text_field :recipe, class: 'form-control' , placeholder: "10文字まで"
             .form-group
               = f.label :taste_imp , '食味感想'
-              = f.text_area :taste_imp, class: 'form-control' , placeholder: "200文字まで" 
+              = f.text_area :taste_imp, class: 'form-control' , placeholder: "200文字まで(改行は無効です)" 
             .form-group
               = f.label :season ,'時期　'
               = f.select :season, [["1月",1],["2月",2],["3月",3],["4月",4],["5月",5],["6月",6],["7月",7],["8月",8],["9月",9],["10月",10],["11月",11],["12月",12]], :prompt => "選択してください", class: 'form-control' 
