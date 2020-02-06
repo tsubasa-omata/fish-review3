@@ -11,23 +11,23 @@ header
       ul.navbar-nav.ml-auto
         - if logged_in?
           li.nav-item.ml-3.ml-xl-3.mt-3.mt-lg-0.my-lg-0.my-1
-            = link_to "fish-reviewとは", '/static_pages/about' ,class: "nav-link"
+            = link_to "fish-reviewとは", '/static_pages/about' ,class: "nav-link #{active?("static_pages", "about")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
-            = link_to "タイムライン",   '/' ,class: "nav-link"
+            = link_to "タイムライン",   '/' ,class: "nav-link #{active?("static_pages", "home")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
             = fa_icon "search" , class: "header-icon d-inline-block"
-            = link_to "投稿検索",   '/reviews' ,class: "nav-link nav-link-icon d-inline-block"
+            = link_to "投稿検索",   '/reviews' ,class: "nav-link nav-link-icon d-inline-block #{active?("reviews", "index")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
             = fa_icon "edit" , class: "header-icon d-inline-block"
-            = link_to "投稿する",   new_review_path ,class: "nav-link nav-link-icon d-inline-block"
+            = link_to "投稿する",   new_review_path ,class: "nav-link nav-link-icon d-inline-block #{active?("reviews", "new")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
-            = link_to "魚種一覧",   '/fishes' ,class: "nav-link"
+            = link_to "魚種一覧",   '/fishes' ,class: "nav-link #{active?("fishes", "index")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
             = fa_icon "user" , class: "header-icon d-inline-block"
-            = link_to "ユーザー一覧", users_path ,class: "nav-link nav-link-icon d-inline-block"
+            = link_to "ユーザー一覧", users_path ,class: "nav-link nav-link-icon d-inline-block #{active?("users", "index")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
             = fa_icon "heart" , class: "header-icon d-inline-block"
-            = link_to "いいね一覧",  '/likes/index' ,class: "nav-link nav-link-icon d-inline-block"
+            = link_to "いいね一覧",  '/likes/index' ,class: "nav-link nav-link-icon d-inline-block #{active?("likes", "index")} "
           /li.nav-item.ml-1.ml-xl-3
           /  = link_to "いいね一覧",   '#' ,class: "nav-link"
           /li.nav-item.dropdown.ml-1.ml-xl-3
@@ -38,27 +38,27 @@ header
               = link_to "投稿検索",   '#' ,class: "dropdown-item"
           - unless guest_user?
             li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
-              = link_to "プロフィール編集" , edit_user_path(current_user),class: "nav-link"
+              = link_to "プロフィール編集" , edit_user_path(current_user),class: "nav-link #{active?("users", "edit")}"
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
             = fa_icon "sign-out" , class: "header-icon d-inline-block"
-            = link_to "ログアウト" , logout_path ,method: :delete ,class: "nav-link nav-link-icon d-inline-block"
+            = link_to "ログアウト" , logout_path ,method: :delete ,class: "nav-link nav-link-icon d-inline-block #{active?("reviews", "new")}"
         - else
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1.mt-3.mt-lg-0
-            = link_to "fish-reviewとは", '/static_pages/about' ,class: "nav-link"
+            = link_to "fish-reviewとは", '/static_pages/about' ,class: "nav-link #{active?("static_pages", "about")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
-            = link_to "ホーム", '/' ,class: "nav-link"
+            = link_to "ホーム", '/' ,class: "nav-link #{active?("static_pages", "home")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
             = fa_icon "fish" , class: "header-icon d-inline-block"
-            = link_to "魚種一覧", '/fishes' ,class: "nav-link nav-link-icon d-inline-block"
+            = link_to "魚種一覧", '/fishes' ,class: "nav-link nav-link-icon d-inline-block #{active?("fishes", "index")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
             = fa_icon "edit" , class: "header-icon d-inline-block"
-            = link_to "投稿する", login_path ,class: "nav-link nav-link-icon d-inline-block"
+            = link_to "投稿する", login_path ,class: "nav-link nav-link-icon d-inline-block #{active?("reviews", "new")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
             = fa_icon "user" , class: "header-icon d-inline-block"
-            = link_to "新規登録" , new_user_path ,class: "nav-link nav-link-icon d-inline-block"
+            = link_to "新規登録" , new_user_path ,class: "nav-link nav-link-icon d-inline-block #{active?("users", "new")}"
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
             = fa_icon "sign-in" , class: "header-icon d-inline-block"
-            = link_to "ログイン" , login_path ,class: "nav-link nav-link-icon d-inline-block"
+            = link_to "ログイン" , login_path ,class: "nav-link nav-link-icon d-inline-block #{active?("sessions", "new")}"
             
 
          
