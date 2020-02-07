@@ -1,6 +1,6 @@
 
 header
-  nav.nav-body.navbar.navbar-expand-lg.shadow.pt-2.pb-3.px-4.mb-0.sticky-top
+  nav.nav-body.navbar.navbar-expand-lg.shadow.pt-2.pb-2.px-4.mb-0.sticky-top
     .navbar__logo-block.text-center
       a.navbar-brand.header__logo.pb-2 href="/" Fish-Review
       br
@@ -10,24 +10,28 @@ header
     #navbarcontent.collapse.navbar-collapse
       ul.navbar-nav.ml-auto
         - if logged_in?
-          li.nav-item.ml-3.ml-xl-3.mt-3.mt-lg-0.my-lg-0.my-1
-            = link_to "fish-reviewとは", '/static_pages/about' ,class: "nav-link #{active?("static_pages", "about")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
-            = link_to "タイムライン",   '/' ,class: "nav-link #{active?("static_pages", "home")} "
+            .nav__item-wrap
+              = link_to "タイムライン",   '/' ,class: "nav-link #{active?("static_pages", "home")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
-            = fa_icon "search" , class: "header-icon d-inline-block"
-            = link_to "投稿検索",   '/reviews' ,class: "nav-link nav-link-icon d-inline-block #{active?("reviews", "index")} "
+            .nav__item-wrap
+              = fa_icon "search" , class: "header-icon d-inline-block"
+              = link_to "投稿検索",   '/reviews' ,class: "nav-link nav-link-icon d-inline-block #{active?("reviews", "index")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
-            = fa_icon "edit" , class: "header-icon d-inline-block"
-            = link_to "投稿する",   new_review_path ,class: "nav-link nav-link-icon d-inline-block #{active?("reviews", "new")} "
+            .nav__item-wrap
+              = fa_icon "edit" , class: "header-icon d-inline-block"
+              = link_to "投稿する",   new_review_path ,class: "nav-link nav-link-icon d-inline-block #{active?("reviews", "new")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
-            = link_to "魚種一覧",   '/fishes' ,class: "nav-link #{active?("fishes", "index")} "
+            .nav__item-wrap
+               = link_to "魚種一覧",   '/fishes' ,class: "nav-link #{active?("fishes", "index")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
-            = fa_icon "user" , class: "header-icon d-inline-block"
-            = link_to "ユーザー一覧", users_path ,class: "nav-link nav-link-icon d-inline-block #{active?("users", "index")} "
+            .nav__item-wrap
+              = fa_icon "user" , class: "header-icon d-inline-block"
+              = link_to "ユーザー一覧", users_path ,class: "nav-link nav-link-icon d-inline-block #{active?("users", "index")} "
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
-            = fa_icon "heart" , class: "header-icon d-inline-block"
-            = link_to "いいね一覧",  '/likes/index' ,class: "nav-link nav-link-icon d-inline-block #{active?("likes", "index")} "
+            .nav__item-wrap
+              = fa_icon "heart" , class: "header-icon d-inline-block"
+              = link_to "いいね一覧",  '/likes/index' ,class: "nav-link nav-link-icon d-inline-block #{active?("likes", "index")} "
           /li.nav-item.ml-1.ml-xl-3
           /  = link_to "いいね一覧",   '#' ,class: "nav-link"
           /li.nav-item.dropdown.ml-1.ml-xl-3
@@ -36,12 +40,21 @@ header
             .dropdown-menu
               = link_to "ユーザー検索",   '#' ,class: "dropdown-item"
               = link_to "投稿検索",   '#' ,class: "dropdown-item"
-          - unless guest_user?
+          /- unless guest_user?
             li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
               = link_to "プロフィール編集" , edit_user_path(current_user),class: "nav-link #{active?("users", "edit")}"
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
-            = fa_icon "sign-out" , class: "header-icon d-inline-block"
-            = link_to "ログアウト" , logout_path ,method: :delete ,class: "nav-link nav-link-icon d-inline-block "
+            .nav__item-wrap
+              = fa_icon "sign-out" , class: "header-icon d-inline-block"
+              = link_to "ログアウト" , logout_path ,method: :delete ,class: "nav-link nav-link-icon d-inline-block "
+          li.nav-item.ml-3.ml-xl-3.my-lg-0.my-0.py-0
+            div
+              - if current_user.avatar.attached?
+                = link_to image_tag(current_user.avatar.variant(combine_options:{resize:"40x40^",crop:"40x40+0+0",gravity: :center}).processed, class: "user_image_header mx-auto"), user_path(current_user.id), class: "nav-link d-block img-fluid m-0 p-0 text-center"
+              -else
+                = link_to image_tag("/user_noimage.png"), user_path(current_user.id), class: "d-inline-block img-fluid user_image m-0 p-0 text-center" 
+              .nav__icon-name
+                = link_to current_user.account_name , user_path(current_user.id)
         - else
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1.mt-3.mt-lg-0
             = link_to "fish-reviewとは", '/static_pages/about' ,class: "nav-link #{active?("static_pages", "about")} "
@@ -61,4 +74,4 @@ header
             = link_to "ログイン" , login_path ,class: "nav-link nav-link-icon d-inline-block #{active?("sessions", "new")}"
             
 
-         
+      

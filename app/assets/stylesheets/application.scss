@@ -144,6 +144,13 @@ header{
   }
 }
 
+.nav__item-wrap{
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%); /* Safari用 */
+  transform: translateY(-50%);
+}
+
 span.header__sub-title {
   color: #FFFFEE;
   font-size: 6px ;
@@ -235,4 +242,12 @@ footer{
 .active{
   border-bottom: 1px solid white ;
   display: inline-block;
+}
+
+.nav__icon-name{
+  color: white;
+  margin: 0;
+  padding: 0;
+  font-size: 0.5rem;
+  font-weight: 200;
 }
