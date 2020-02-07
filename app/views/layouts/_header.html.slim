@@ -41,7 +41,7 @@ header
               = link_to "プロフィール編集" , edit_user_path(current_user),class: "nav-link #{active?("users", "edit")}"
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
             = fa_icon "sign-out" , class: "header-icon d-inline-block"
-            = link_to "ログアウト" , logout_path ,method: :delete ,class: "nav-link nav-link-icon d-inline-block #{active?("reviews", "new")}"
+            = link_to "ログアウト" , logout_path ,method: :delete ,class: "nav-link nav-link-icon d-inline-block "
         - else
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1.mt-3.mt-lg-0
             = link_to "fish-reviewとは", '/static_pages/about' ,class: "nav-link #{active?("static_pages", "about")} "
