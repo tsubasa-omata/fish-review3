@@ -1,8 +1,4 @@
 module ReviewsHelper
-  #def review_season
-   # season = Review.select(:season).group.map(&:season)
-    #season.each { |a| puts a.to_sym }
-  #end
 
   def select_review
     @search_reviews = Review.all
