@@ -19,8 +19,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.account_name = "@" + @user.account_name
-    if @user.save                                       #ここでbefore_actionのcreate_activation_digestが実行される。
-      @user.send_activation_email                      #このsend_activation_emailメソッドの中のaccount_activationはuser_mailerのメソッド？それともuser_mailer_previewのメソッド？
+    if @user.save                                     
+      @user.send_activation_email                    
       flash[:info] = "メールを確認してアカウントを有効化して下さい"
       redirect_to root_url
     else
