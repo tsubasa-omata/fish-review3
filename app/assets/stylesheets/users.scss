@@ -1,16 +1,3 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-//.show_follow{
- /*
- .follow_list{
-   align-items: center;
-   padding:0.5vw;
-   display:flex;
-   width:80%;
-   margin:0 auto;
- }
- */
  .follow_form{
    margin-left:0 auto;
    
@@ -22,8 +9,7 @@
    width:50px;
    height:50px;
    border-radius:50%;
-   // transform: translate(-50%, -50%);
-   // -webkit-transform: translate(-50%, -50%);
+  
  }
  .user_image_header{
   overflow: hidden;
@@ -57,9 +43,9 @@
 
   .follow_form input{
     position: absolute;
-    top: 50%; /*親要素を起点に上から50%*/
-    left: 50%;  /*親要素を起点に左から50%*/
-    transform: translateY(-50%) translateX(-50%); /*要素の大きさの半分ずつを戻す*/
+    top: 50%; 
+    left: 50%;  
+    transform: translateY(-50%) translateX(-50%); 
     -webkit-transform: translateY(-50%) translateX(-50%);
   }
 
@@ -91,9 +77,9 @@
 
 .user__prof-follow{
   position: absolute;
-  top: 50%; /*親要素を起点に上から50%*/
-  left: 0%;  /*親要素を起点に左から50%*/
-  transform: translateY(-50%);  /*要素の大きさの半分ずつを戻す*/
+  top: 50%; 
+  left: 0%;  
+  transform: translateY(-50%);  
   -webkit-transform: translateY(-50%);
 }
 

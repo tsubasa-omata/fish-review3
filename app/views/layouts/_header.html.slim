@@ -32,17 +32,6 @@ header
             .nav__item-wrap
               = fa_icon "heart" , class: "header-icon d-inline-block"
               = link_to "いいね一覧",  '/likes/index' ,class: "nav-link nav-link-icon d-inline-block #{active?("likes", "index")} "
-          /li.nav-item.ml-1.ml-xl-3
-          /  = link_to "いいね一覧",   '#' ,class: "nav-link"
-          /li.nav-item.dropdown.ml-1.ml-xl-3
-            a.nav-link.dropdown-toggle data-toggle="dropdown" href="#"
-              ="検索"
-            .dropdown-menu
-              = link_to "ユーザー検索",   '#' ,class: "dropdown-item"
-              = link_to "投稿検索",   '#' ,class: "dropdown-item"
-          /- unless guest_user?
-            li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
-              = link_to "プロフィール編集" , edit_user_path(current_user),class: "nav-link #{active?("users", "edit")}"
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-1
             .nav__item-wrap
               = fa_icon "sign-out" , class: "header-icon d-inline-block"
