@@ -29,9 +29,7 @@ class User < ApplicationRecord
                        allow_nil: true     #has_resure_passwordがあるから新規登録時空になることはない
 
   before_save :downcase_email
-  #before_update :change_account_name
   before_create :create_activation_digest
-  #mount_uploader :picture, ImageUploader
   has_secure_password
 
   def downcase_email
@@ -41,10 +39,6 @@ class User < ApplicationRecord
   def downcase_account_name
     self.account_name = account_name.downcase
   end
-
-  #def change_account_name
-  #  self.account_name = "@" + account_name
-  #end
 
   def follow(other_user)
     active_relationships.create(followed: other_user)
@@ -76,12 +70,12 @@ class User < ApplicationRecord
   end
  
   def remember
-    self.remember_token = User.new_token                             #ここでuserの仮想属性remember_tokenに値を設定する
-    update_attribute(:remember_digest, User.digest(remember_token))  #ここでダイジェスト化してremember_digestを更新する
+    self.remember_token = User.new_token                             #userの仮想属性remember_tokenに値を設定する
+    update_attribute(:remember_digest, User.digest(remember_token))  #ダイジェスト化してremember_digestを更新する
   end
 
-  def authenticated?(attribute ,token) #このtokenはよく分からない attributeが第一引数でtokenが第二引数呼び出す時は（第一引数、第二引数）という感じ 
-    digest = send("#{attribute}_digest")    #sendメソッドのおかげでこれができる
+  def authenticated?(attribute ,token) 
+    digest = send("#{attribute}_digest")    
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
   end
@@ -109,7 +103,7 @@ class User < ApplicationRecord
   end
 
   def send_password_reset_email
-    UserMailer.password_reset(self).deliver_now      #password_reset(self)これはuser_mailerで定義している
+    UserMailer.password_reset(self).deliver_now
   end
   
 end

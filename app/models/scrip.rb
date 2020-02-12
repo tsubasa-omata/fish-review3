@@ -10,10 +10,6 @@ class Scrip < ApplicationRecord
         fish.name = element.inner_text
         fish.save!
       end
-    #elements.each do |element|
-     # fish = Fish.new
-      #fish.name = element.inner_text
-      #fish.save
     end
   end
 
