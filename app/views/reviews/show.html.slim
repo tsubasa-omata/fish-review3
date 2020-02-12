@@ -3,9 +3,6 @@
   .review-partial.col-12.col-md-8.col-lg-7.p-3
     .review-partial__box.shadow
       == render "shared/index_review" , review: @review
-      /.review-partial-show__time
-        = time_ago_in_words(@review.created_at) 
-        |前
       - if logged_in? && correct_user
         .review-partial__edit.mt-5.mb-2  
           p.review-partial__edit-edit.ml-3

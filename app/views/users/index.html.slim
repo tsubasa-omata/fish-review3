@@ -4,7 +4,6 @@
   .row
     .col-12.text-center.mb-3
       = search_form_for(@q, url:users_path) do |f|
-        /= f.label :name, " " ,class: "mr-3"
         = f.search_field :name_cont , placeholder: "ユーザー名またはユーザーID" , class: "col-10 col-sm-5 rounded-lg mb-4"
         = f.submit "検索"  ,class: "ml-3 btn btn-success btn-sm "
       end
@@ -31,14 +30,6 @@
           .col-sm-2.col-12.user__prof-follow-form-wrap.text-center
             .user__prof-follow-form.text-center
               == render "follow_form" , object: user if logged_in?
-              //  #follow_form.col-sm-2.col-3.text-center
-                  - if current_user.following?(user) 
-                    = form_with(model: current_user.active_relationships.find_by(followed_id: user.id),html: { method: :delete }) do |f| 
-                      = f.submit "Unfollow", class: "btn btn-primary" 
-                  - else
-                    = form_with(model: current_user.active_relationships.build) do |f| 
-                      = hidden_field_tag :followed_id, user.id 
-                      = f.submit "Follow", class: "btn btn-primary" 
           - if current_user.admin? && !current_user?(user)
             .col-12.text-right
               = link_to "削除", user, method: :delete, data: { confirm: "ユーザーを削除しますか?" }, class: "text-right"

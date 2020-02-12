@@ -12,8 +12,6 @@
         .col-5.col-sm-2.user__prof-follow-wrap.px-1.mr-3
           .user__prof-follow
             == render "shared/profile"
-            /.user__prof-follow-form
-            /  == render "follow_form" , object: @user if logged_in? 
         .col-12.col-sm-6.user__prof-prof-wrap.px-2
           .user__prof-prof.mb-4.mt-1
             = current_user.prof
@@ -38,7 +36,6 @@
       .review__index-search-item
         = f.submit "検索"  ,class: "ml-3 btn btn-success btn-sm mx-auto"
   end
-      
 - if @reviews.any?
   .row
     - @reviews.each do |review|   

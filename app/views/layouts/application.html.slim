@@ -8,10 +8,9 @@ html
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
-    /= render 'layout/shim' ブラウザ対応
+
   body
     == render 'layouts/header'
-    /-if request.path == 'static_pages/about'
     -if current_page?(static_pages_about_path)
       .application__all
         - flash.each do |message_type, message| 
@@ -26,7 +25,6 @@ html
             = message 
         == yield
         == render 'layouts/footer'
-    /= debug(params) if Rails.env.development?
     
     script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"
     script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"
