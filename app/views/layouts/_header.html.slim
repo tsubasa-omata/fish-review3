@@ -41,7 +41,7 @@ header
               - if current_user.avatar.attached?
                 = link_to image_tag(current_user.avatar.variant(combine_options:{resize:"40x40^",crop:"40x40+0+0",gravity: :center}).processed, class: "user_image_header mx-auto"), user_path(current_user.id), class: "nav-link d-block img-fluid m-0 p-0 text-center"
               -else
-                = link_to image_tag("/user_noimage.png"), user_path(current_user.id), class: "d-inline-block img-fluid user_image m-0 p-0 text-center" 
+                = link_to image_tag("/user_noimage.png", class: "user_image"), user_path(current_user.id), class: "d-inline-block img-fluid user_image m-0 p-0 text-center" 
               .nav__icon-name
                 = link_to current_user.account_name , user_path(current_user.id)
         - else
