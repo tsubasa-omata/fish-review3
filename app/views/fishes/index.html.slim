@@ -11,7 +11,7 @@ container
       -if @fishes.empty?
         p.text-center.fish-index__search-nil
           | 見つかりませんでした
-    - @fishes.limit(5).each do |fish|
+    - @fishes.each do |fish|
       .col-12.col-xs-6.col-sm-4.col-md-3
         = link_to fish.name , fish_path(fish)
         span.fish-index__count
