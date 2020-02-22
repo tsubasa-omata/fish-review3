@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,sBAAuB;EACrB,KAAK,EAAE,OAAO",
-"sources": ["partial_in_load_paths.scss"],
-"names": [],
-"file": "partial_in_load_paths.css"
-}
