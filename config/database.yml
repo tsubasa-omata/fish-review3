@@ -24,9 +24,9 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: fish-review3
+  database: fish_review3
   pool: 5
-  username: root
-  password: 
-  host: 127.0.0.1
+  username: <%= Rails.application.credentials[:db_user] %>
+  password: <%= Rails.application.credentials[:db_pass] %>
+  host: <%= Rails.application.credentials[:db_end_point] %>
   socket: /tmp/mysql.sock
