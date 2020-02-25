@@ -39,7 +39,7 @@ header
           li.nav-item.ml-3.ml-xl-3.my-lg-0.my-0.py-0
             div
               - if current_user.avatar.attached?
-                = link_to image_tag(current_user.avatar.variant(combine_options:{resize:"40x40^",crop:"40x40+0+0",gravity: :center}).processed, class: "user_image_header mx-auto"), user_path(current_user.id), class: "nav-link d-block img-fluid m-0 p-0 text-center"
+                = link_to image_tag(current_user.avatar.variant(combine_options:{resize:"40x40^",crop:"40x40+0+0",gravity: :center,  auto_orient: true}).processed, class: "user_image_header mx-auto"), user_path(current_user.id), class: "nav-link d-block img-fluid m-0 p-0 text-center"
               -else
                 = link_to image_tag("/user_noimage.png", class: "user_image"), user_path(current_user.id), class: "d-inline-block img-fluid user_image m-0 p-0 text-center" 
               .nav__icon-name

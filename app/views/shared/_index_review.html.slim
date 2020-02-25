@@ -4,14 +4,14 @@
   = link_to "" , review_path(review) , class: "review-partial__entire-link"
   .col-6.p-3
     - if review.avatar.attached?
-      = image_tag review.avatar.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center}).processed,class: "mx-auto d-block img-fluid img-thumbnail" 
+      = image_tag review.avatar.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center,  auto_orient: true}).processed,class: "mx-auto d-block img-fluid img-thumbnail" 
     - else
       = image_tag "noimage.png" ,class: "mx-auto d-block img-fluid img-thumbnail" 
   .col-6.p-3.review-index__review
     .review-partial__user-info.pb-2.d-flex
       .review-partial__user-avatar
         - if review.user.avatar.attached?
-          = image_tag review.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center}).processed,class: "d-inline-block user_image" 
+          = image_tag review.user.avatar.variant(combine_options:{resize:"50x50^",crop:"50x50+0+0",gravity: :center,  auto_orient: true}).processed,class: "d-inline-block user_image" 
         - else
           = image_tag "/user_noimage.png" ,class: "d-inline-block img-fluid user_image" 
       .review-partial__user-name-wrap
