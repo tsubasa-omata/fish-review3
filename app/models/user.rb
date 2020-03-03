@@ -106,4 +106,7 @@ class User < ApplicationRecord
     UserMailer.password_reset(self).deliver_now
   end
   
+
+ 
+
 end

@@ -21,16 +21,19 @@
 
 
 ## サービスURL  
-https://fish-review3.herokuapp.com
+https://fish-review.com
 
 ## 技術スタック  
  - Ruby 2.6.3
  - Rails5.2.4
    - Slim　（HTMLテンプレートエンジン使用）
    - Rspec
+ - bootstrap
  - MySQL  
- - heroku
+ - aws
    - S3 (画像データの保存)
+   - routes53 (独自ドメインの取得)
+   - SSL化
 ## 機能一覧
 - 管理者権限
 - ユーザー登録
