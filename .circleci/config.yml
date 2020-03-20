@@ -11,6 +11,7 @@ jobs:
         environment:
           BUNDLE_PATH: vendor/bundle
           BUNDLER_VERSION: 2.0.1
+          DATABASE_HOSTNAME: '127.0.0.1'
       - image: circleci/mysql:5.7
         environment:
           MYSQL_DATABASE: base_project_test
