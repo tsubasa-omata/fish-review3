@@ -26,13 +26,13 @@
         = f.select :fish_id_eq, options_for_select(Fish.joins(:reviews).distinct.map{|fish| [fish.name , fish.id]}) ,{include_blank: "指定なし"},class: "js-selectable mb-4"
       .review__index-search-item    
         = f.label :season, "時期(月)　" ,class: ""
-        = f.collection_select :season_eq, Review.select(:season).group(:season), :season, :season, :include_blank => '指定なし',  placeholder: "時期" , class: "col-10 col-sm-5 rounded-lg mb-4"
+        = f.collection_select :season_eq, Review.all.pluck(:season).uniq, :season, :season, :include_blank => '指定なし',  placeholder: "時期" , class: "col-10 col-sm-5 rounded-lg mb-4"
       .review__index-search-item
         = f.label :place, "場所　" ,class: ""
-        = f.collection_select :place_eq ,Review.select(:place).group(:place), :place,:place, placeholder: "場所" ,:include_blank => '指定なし', class: "col-10 col-sm-5 rounded-lg mb-4"
+        = f.collection_select :place_eq ,Review.all.pluck(:place), :place,:place, placeholder: "場所" ,:include_blank => '指定なし', class: "col-10 col-sm-5 rounded-lg mb-4"
       .review__index-search-item
         = f.label :taste_level, "食味評価　" ,class: ""
-        = f.collection_select :taste_level_eq ,Review.select(:taste_level).group(:taste_level), :taste_level,:taste_level, placeholder: "食味評価" , :include_blank => '指定なし',class: "col-10 col-sm-5 rounded-lg mb-4"
+        = f.collection_select :taste_level_eq ,Review.all.pluck(:taste_level), :taste_level,:taste_level, placeholder: "食味評価" , :include_blank => '指定なし',class: "col-10 col-sm-5 rounded-lg mb-4"
       .review__index-search-item
         = f.submit "検索"  ,class: "ml-3 btn btn-success btn-sm mx-auto"
   end
